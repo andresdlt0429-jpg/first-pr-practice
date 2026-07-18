@@ -14,6 +14,10 @@ Many home service owners have the wrong idea, thinking that it's all about sales
 
 I want to help home service business owners — the ones who care a lot about their fulfillment. They care about the work that they do. They do great work. I wanna help them get more business because they deserve it, because they actually care about the work that they do.
 
+I believe in always remaining humble. I believe everybody should be treated fairly. I believe we should strive to become the best versions of ourselves, and we should not get complacent, because that's when we don't think much of ourselves. If we think highly of ourselves, we're bound to accomplish great things. When we stop doing that, that's almost like the death of the soul.
+
+I believe that a majority, almost all people, are selfish, and will always put themselves first — will only do things in the interest of themselves, the majority of the time.
+
 ## Philosophy
 
 If you were in the same place I was three years ago: try to get a sales job. Try to get a sales job. And always be expanding your skill level. But also be smart enough to know when that job isn't worth it for you anymore.
