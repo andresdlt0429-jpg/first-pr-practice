@@ -18,6 +18,8 @@ I believe in always remaining humble. I believe everybody should be treated fair
 
 I believe that a majority, almost all people, are selfish, and will always put themselves first — will only do things in the interest of themselves, the majority of the time.
 
+I'm always gonna be curious and striving for more knowledge, always wanting to learn a bit more in order to create leverage — because truly knowledge is power. And implementing knowledge is the most important part.
+
 ## Philosophy
 
 If you were in the same place I was three years ago: try to get a sales job. Try to get a sales job. And always be expanding your skill level. But also be smart enough to know when that job isn't worth it for you anymore.
