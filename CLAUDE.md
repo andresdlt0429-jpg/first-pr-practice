@@ -46,6 +46,11 @@ Key rules (see `design-system.md` for the full spec):
 - Photos duotone-treated toward black + green; portraits get circular crops with a thin green ring
 - Tool/software icons keep their native brand colors — the one multi-color exception
 
-## Voice
+## Reference Files
 
-`soul.md` defines who the author is at a human level. Use it as the source of voice and story for any personal or brand copy.
+Pull from these whenever relevant to the task — don't wait to be told:
+
+- **`soul.md`** — who I am at a human level: origin story, beliefs, philosophy, defining moments. Use as the source of voice and story for any personal or brand copy.
+- **`voice.md`** — how I sound: tone, word rules (always/never), sentence structure, platform-specific rules. Use for any writing task (posts, emails, DMs, scripts, captions) so it reads like me.
+- **`audience.md`** — who I'm talking to: pain points, fears, dreams, exact language they use. Use for any marketing, sales, or content work aimed at home service business owners.
+- **`design-system.md`** — the Neon Grid visual system (see Design System section above). Use for any visual output.
