@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strata Digital Marketing — Web Design &amp; SEO for Electricians &amp; Plumbers</title>
+<meta name="description" content="Strata Digital Marketing builds fast, high-converting websites and local SEO systems built specifically for electricians and plumbers who are tired of an empty schedule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-950:#0a0c11;
+    --ink-900:#12151c;
+    --ink-800:#1b202b;
+    --ink-700:#2a3140;
+    --ink-600:#414a5c;
+    --paper:#faf8f4;
+    --paper-dim:#f1ede4;
+    --paper-line:#e5dfd2;
+    --slate-700:#3d4351;
+    --slate-500:#666f80;
+    --slate-400:#8891a0;
+    --white:#ffffff;
+    --accent-400:#ff8a5c;
+    --accent-500:#ff7a45;
+    --accent-600:#f2622c;
+    --accent-700:#c94a1d;
+    --accent-ink:#3a1a0c;
+
+    --font-display:'Bricolage Grotesque', system-ui, sans-serif;
+    --font-body:'Inter', system-ui, sans-serif;
+
+    --space-1:.5rem;
+    --space-2:.75rem;
+    --space-3:1rem;
+    --space-4:1.5rem;
+    --space-5:2rem;
+    --space-6:3rem;
+    --space-7:4rem;
+    --space-8:6rem;
+    --section-pad: clamp(4rem, 4rem + 4vw, 7.5rem);
+
+    --radius-sm:10px;
+    --radius-md:16px;
+    --radius-lg:26px;
+    --shadow-soft: 0 20px 50px -20px rgba(18,21,28,.25);
+    --shadow-lift: 0 30px 70px -25px rgba(18,21,28,.35);
+    --ease: cubic-bezier(.16,.8,.3,1);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--slate-700);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    line-height:1.6;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color:inherit; }
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    color:var(--ink-950);
+    margin:0;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  p{ margin:0; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; }
+
+  .wrap{
+    width:100%;
+    max-width:1180px;
+    margin-inline:auto;
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-600);
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:2px;
+    background:var(--accent-600);
+    display:inline-block;
+    border-radius:2px;
+  }
+
+  h2.section-title{
+    font-size:clamp(2rem, 1.5rem + 2.2vw, 3.15rem);
+    line-height:1.08;
+  }
+  .section-head{
+    max-width:640px;
+    margin-bottom: var(--space-7);
+  }
+  .section-head p{
+    margin-top:var(--space-3);
+    font-size:1.0625rem;
+    color:var(--slate-500);
+  }
+  .section-head.center{
+    margin-inline:auto;
+    text-align:center;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+    padding:.9rem 1.6rem;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.9375rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), background-color .25s var(--ease), color .25s var(--ease);
+    white-space:nowrap;
+  }
+  .btn:active{ transform:translateY(1px); }
+  .btn-primary{
+    background:var(--accent-600);
+    color:var(--white);
+    box-shadow: 0 12px 26px -10px rgba(242,98,44,.55);
+  }
+  .btn-primary:hover{
+    background:var(--accent-700);
+    transform:translateY(-2px);
+    box-shadow: 0 16px 32px -10px rgba(242,98,44,.6);
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,.06);
+    border-color:rgba(255,255,255,.22);
+    color:var(--white);
+  }
+  .btn-ghost:hover{
+    background:rgba(255,255,255,.14);
+    transform:translateY(-2px);
+  }
+  .btn-dark{
+    background:var(--ink-950);
+    color:var(--white);
+  }
+  .btn-dark:hover{
+    background:var(--ink-800);
+    transform:translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-sm{ padding:.7rem 1.25rem; font-size:.875rem; }
+
+  /* ---------- NAV ---------- */
+  .site-nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(250,248,244,.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(18,21,28,.07);
+  }
+  .site-nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-block:.9rem;
+    max-width:1240px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:1.15rem;
+    color:var(--ink-950);
+    text-decoration:none;
+    letter-spacing:-.01em;
+  }
+  .brand-mark{
+    width:32px;
+    height:32px;
+    border-radius:9px;
+    background:linear-gradient(155deg, var(--accent-500), var(--accent-700));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .nav-toggle-input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .nav-toggle-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    border:1px solid var(--paper-line);
+    background:var(--white);
+    color:var(--ink-950);
+    cursor:pointer;
+    flex-shrink:0;
+    position:relative;
+  }
+  .nav-toggle-btn .icon-close{ position:absolute; opacity:0; }
+  .nav-toggle-input:checked ~ .nav-cta .nav-toggle-btn .icon-bars{ opacity:0; }
+  .nav-toggle-input:checked ~ .nav-cta .nav-toggle-btn .icon-close{ opacity:1; }
+
+  .nav-links{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:var(--space-3);
+    font-size:.95rem;
+    font-weight:600;
+    color:var(--slate-700);
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--paper);
+    border-bottom:1px solid rgba(18,21,28,.07);
+    padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition: max-height .3s var(--ease), opacity .22s var(--ease), padding-block .3s var(--ease);
+  }
+  .nav-toggle-input:checked ~ .nav-links{
+    max-height:20rem;
+    opacity:1;
+    padding-block:var(--space-4);
+    box-shadow: var(--shadow-soft);
+  }
+  .nav-links a{
+    text-decoration:none;
+    position:relative;
+    padding-block:.25rem;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; right:100%;
+    bottom:-2px;
+    height:2px;
+    background:var(--accent-600);
+    border-radius:2px;
+    transition:right .28s var(--ease);
+  }
+  .nav-links a:hover::after{ right:0; }
+  .nav-cta{ display:flex; align-items:center; gap:.75rem; }
+  .nav-phone{
+    display:none;
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--slate-500);
+    text-decoration:none;
+    align-items:center;
+    gap:.4rem;
+  }
+  @media(min-width:900px){
+    .nav-toggle-btn{ display:none; }
+    .nav-links{
+      position:static;
+      flex-direction:row;
+      align-items:center;
+      gap:var(--space-6);
+      max-height:none;
+      opacity:1;
+      overflow:visible;
+      padding:0;
+      background:transparent;
+      border-bottom:none;
+    }
+    .nav-phone{ display:inline-flex; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 100% at 50% 0%, #171b24 0%, var(--ink-950) 60%);
+    padding-top: clamp(3.5rem, 4vw + 2rem, 6rem);
+    padding-bottom: clamp(4.5rem, 6vw + 2rem, 8rem);
+  }
+  .hero-blob{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(70px);
+    opacity:.55;
+    pointer-events:none;
+  }
+  .hero-blob.b1{
+    width:640px; height:640px;
+    top:-260px; left:-160px;
+    background: radial-gradient(circle at 30% 30%, var(--accent-500), transparent 70%);
+    opacity:.5;
+  }
+  .hero-blob.b2{
+    width:520px; height:520px;
+    bottom:-260px; right:-140px;
+    background: radial-gradient(circle at 60% 40%, var(--accent-700), transparent 70%);
+    opacity:.45;
+  }
+  .hero-blob.b3{
+    width:420px; height:420px;
+    top:10%; right:6%;
+    background: radial-gradient(circle at 50% 50%, #384157, transparent 72%);
+    opacity:.6;
+  }
+  .hero-grain{
+    position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+    opacity:.35;
+    pointer-events:none;
+  }
+  .hero .wrap{
+    position:relative;
+    z-index:2;
+    display:grid;
+    gap: var(--space-8);
+    align-items:center;
+  }
+  @media(min-width:960px){
+    .hero .wrap{
+      grid-template-columns: 1.15fr .85fr;
+      gap: var(--space-6);
+    }
+  }
+  .hero-eyebrow{
+    color: var(--accent-400);
+  }
+  .hero-eyebrow::before{ background:var(--accent-400); }
+  .hero h1{
+    color:var(--white);
+    font-size: clamp(2.5rem, 2rem + 3.6vw, 4.6rem);
+    line-height:1.04;
+    margin-top:var(--space-3);
+    max-width:16ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--accent-400);
+  }
+  .hero p.lede{
+    color: rgba(255,255,255,.72);
+    font-size: clamp(1.05rem, .95rem + .4vw, 1.25rem);
+    max-width:46ch;
+    margin-top: var(--space-4);
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:var(--space-4);
+    margin-top:var(--space-6);
+  }
+  .hero-note{
+    font-size:.85rem;
+    color:rgba(255,255,255,.5);
+  }
+  .hero-trust{
+    display:flex;
+    flex-wrap:wrap;
+    gap: var(--space-5);
+    margin-top:var(--space-7);
+    padding-top:var(--space-5);
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .hero-trust div{ min-width:110px; }
+  .hero-trust strong{
+    display:block;
+    font-family:var(--font-display);
+    font-size:1.6rem;
+    color:var(--white);
+  }
+  .hero-trust span{
+    font-size:.8rem;
+    color:rgba(255,255,255,.55);
+  }
+
+  /* frosted glass card */
+  .hero-card{
+    position:relative;
+    background: rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-lift);
+  }
+  .hero-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:var(--space-5);
+  }
+  .hero-card-top span{
+    font-size:.75rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:rgba(255,255,255,.55);
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:#5be08a;
+    box-shadow:0 0 0 4px rgba(91,224,138,.2);
+  }
+  .hero-card-stat{
+    font-family:var(--font-display);
+    font-size:2.75rem;
+    color:var(--white);
+    line-height:1;
+  }
+  .hero-card-stat span{
+    color:var(--accent-400);
+  }
+  .hero-card-sub{
+    color:rgba(255,255,255,.6);
+    font-size:.9rem;
+    margin-top:.5rem;
+  }
+  .hero-card-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    height:64px;
+    margin-top:var(--space-5);
+  }
+  .hero-card-bars i{
+    flex:1;
+    display:block;
+    border-radius:5px 5px 2px 2px;
+    background: linear-gradient(180deg, var(--accent-400), var(--accent-700));
+    opacity:.85;
+  }
+  .hero-card-foot{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    margin-top:var(--space-5);
+    padding-top:var(--space-5);
+    border-top:1px solid rgba(255,255,255,.14);
+    font-size:.85rem;
+    color:rgba(255,255,255,.7);
+  }
+  .hero-card-foot svg{ flex-shrink:0; }
+
+  /* ---------- REVEAL / MOTION ---------- */
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
+  html.js .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition: opacity .7s var(--ease), transform .7s var(--ease);
+  }
+  html.js .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  html.js .reveal-stagger.is-visible > *{ transition-delay: calc(var(--i, 0) * 90ms); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{ padding-block: var(--section-pad); }
+  .steps{
+    display:grid;
+    gap: var(--space-6);
+    counter-reset: step;
+  }
+  @media(min-width:800px){
+    .steps{ grid-template-columns:repeat(3,1fr); gap:var(--space-5); }
+  }
+  .step{
+    position:relative;
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-radius: var(--radius-md);
+    padding: var(--space-6) var(--space-5);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .step:hover{
+    transform:translateY(-6px);
+    box-shadow: var(--shadow-soft);
+  }
+  .step-num{
+    font-family:var(--font-display);
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--accent-600);
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    margin-bottom:var(--space-4);
+  }
+  .step-num::before{
+    content:"";
+    width:36px; height:1px;
+    background:var(--paper-line);
+  }
+  .step-icon{
+    width:48px; height:48px;
+    border-radius:12px;
+    background:var(--accent-ink);
+    background: linear-gradient(155deg, #fff1e8, #ffe1cf);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:var(--space-4);
+    color:var(--accent-600);
+  }
+  .step h3{ font-size:1.25rem; margin-bottom:.6rem; }
+  .step p{ color:var(--slate-500); font-size:.95rem; }
+  .step-connector{
+    display:none;
+  }
+  @media(min-width:800px){
+    .step:not(:last-child)::after{
+      content:"";
+      position:absolute;
+      top:50%; right:calc(var(--space-5) * -1 - 1px);
+      width:var(--space-5);
+      height:1px;
+      background: repeating-linear-gradient(90deg, var(--paper-line) 0 6px, transparent 6px 12px);
+    }
+  }
+
+  /* ---------- SERVICES / FEATURES ---------- */
+  .services{
+    background:var(--ink-950);
+    padding-block: var(--section-pad);
+    position:relative;
+    overflow:hidden;
+  }
+  .services::before{
+    content:"";
+    position:absolute;
+    top:-20%; left:50%;
+    width:900px; height:900px;
+    transform:translateX(-50%);
+    background: radial-gradient(circle, rgba(242,98,44,.16), transparent 65%);
+    pointer-events:none;
+  }
+  .services .section-head h2, .services .eyebrow{ color:var(--white); }
+  .services .eyebrow{ color:var(--accent-400); }
+  .services .eyebrow::before{ background:var(--accent-400); }
+  .services .section-head p{ color:rgba(255,255,255,.6); }
+
+  .pillars{
+    position:relative;
+    display:grid;
+    gap:var(--space-5);
+  }
+  @media(min-width:860px){
+    .pillars{ grid-template-columns:repeat(3,1fr); }
+  }
+  .pillar{
+    background: rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius: var(--radius-md);
+    padding:var(--space-6) var(--space-5);
+    transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .pillar:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.065);
+    border-color:rgba(255,255,255,.2);
+  }
+  .pillar-icon{
+    width:46px; height:46px;
+    border-radius:12px;
+    background:rgba(242,98,44,.15);
+    color:var(--accent-400);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:var(--space-4);
+  }
+  .pillar h3{
+    color:var(--white);
+    font-size:1.3rem;
+    margin-bottom:.4rem;
+  }
+  .pillar > p{
+    color:rgba(255,255,255,.55);
+    font-size:.9rem;
+    margin-bottom:var(--space-4);
+  }
+  .pillar-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:.65rem;
+    padding-block:.55rem;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:rgba(255,255,255,.82);
+    font-size:.92rem;
+  }
+  .pillar-list li:first-child{ border-top:none; }
+  .pillar-list svg{
+    flex-shrink:0;
+    margin-top:2px;
+    color:var(--accent-400);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing{ padding-block: var(--section-pad); background:var(--paper); }
+  .plans{
+    display:grid;
+    gap:var(--space-5);
+    align-items:stretch;
+  }
+  @media(min-width:900px){
+    .plans{ grid-template-columns:repeat(3,1fr); }
+  }
+  .plan{
+    display:flex;
+    flex-direction:column;
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-radius: var(--radius-lg);
+    padding:var(--space-6) var(--space-5);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .plan:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); }
+  .plan-featured{
+    background: var(--ink-950);
+    border-color: var(--ink-950);
+    position:relative;
+    box-shadow: var(--shadow-lift);
+  }
+  @media(min-width:900px){
+    .plan-featured{ transform:scale(1.045); z-index:2; }
+    .plan-featured:hover{ transform:scale(1.045) translateY(-6px); }
+  }
+  .plan-badge{
+    position:absolute;
+    top:-14px; left:50%;
+    transform:translateX(-50%);
+    background:var(--accent-600);
+    color:var(--white);
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:.4rem .9rem;
+    border-radius:999px;
+    box-shadow:0 8px 18px -6px rgba(242,98,44,.6);
+  }
+  .plan-name{
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--slate-500);
+  }
+  .plan-featured .plan-name{ color:rgba(255,255,255,.65); }
+  .plan-desc{
+    font-size:.875rem;
+    color:var(--slate-500);
+    margin-top:.35rem;
+    margin-bottom:var(--space-5);
+  }
+  .plan-featured .plan-desc{ color:rgba(255,255,255,.55); }
+  .plan-price{
+    display:flex;
+    align-items:baseline;
+    gap:.35rem;
+    margin-bottom:var(--space-5);
+  }
+  .plan-price .amount{
+    font-family:var(--font-display);
+    font-size:2.75rem;
+    color:var(--ink-950);
+  }
+  .plan-featured .plan-price .amount{ color:var(--white); }
+  .plan-price .period{
+    font-size:.9rem;
+    color:var(--slate-500);
+  }
+  .plan-featured .plan-price .period{ color:rgba(255,255,255,.5); }
+  .plan-list{
+    flex:1;
+    margin-bottom:var(--space-6);
+  }
+  .plan-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:.6rem;
+    padding-block:.5rem;
+    font-size:.92rem;
+    color:var(--slate-700);
+  }
+  .plan-featured .plan-list li{ color:rgba(255,255,255,.85); }
+  .plan-list li svg{ flex-shrink:0; margin-top:3px; color:var(--accent-600); }
+  .plan-featured .plan-list li svg{ color:var(--accent-400); }
+  .plan-list li.included-all{
+    color:var(--slate-500);
+    font-style:italic;
+    font-size:.85rem;
+  }
+  .plan-featured .plan-list li.included-all{ color:rgba(255,255,255,.55); }
+  .plan .btn{ width:100%; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ padding-block: var(--section-pad); background:var(--paper-dim); }
+  .t-grid{
+    display:grid;
+    gap:var(--space-5);
+  }
+  @media(min-width:860px){
+    .t-grid{ grid-template-columns:repeat(3,1fr); }
+  }
+  .t-card{
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-radius:var(--radius-md);
+    padding:var(--space-5);
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .t-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); }
+  .t-stars{ display:flex; gap:3px; color:var(--accent-500); margin-bottom:var(--space-4); }
+  .t-quote{
+    font-size:1rem;
+    color:var(--ink-800);
+    line-height:1.65;
+    margin-bottom:var(--space-5);
+  }
+  .t-person{
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+  }
+  .t-avatar{
+    width:42px; height:42px;
+    border-radius:50%;
+    background: linear-gradient(155deg, var(--accent-500), var(--accent-700));
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:.95rem;
+    flex-shrink:0;
+  }
+  .t-person strong{ display:block; font-size:.9rem; color:var(--ink-950); }
+  .t-person span{ display:block; font-size:.8rem; color:var(--slate-500); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ padding-block: var(--section-pad); background:var(--ink-950); position:relative; overflow:hidden; }
+  .contact::before{
+    content:"";
+    position:absolute;
+    bottom:-30%; right:-10%;
+    width:700px; height:700px;
+    background: radial-gradient(circle, rgba(242,98,44,.18), transparent 68%);
+    pointer-events:none;
+  }
+  .contact-grid{
+    position:relative;
+    display:grid;
+    gap:var(--space-7);
+  }
+  @media(min-width:920px){
+    .contact-grid{ grid-template-columns: .9fr 1.1fr; align-items:start; }
+  }
+  .contact-info .eyebrow{ color:var(--accent-400); }
+  .contact-info .eyebrow::before{ background:var(--accent-400); }
+  .contact-info h2{
+    color:var(--white);
+    font-size:clamp(1.9rem, 1.5rem + 2vw, 2.75rem);
+    margin-top:var(--space-3);
+    line-height:1.1;
+  }
+  .contact-info p{
+    color:rgba(255,255,255,.62);
+    margin-top:var(--space-4);
+    max-width:42ch;
+    font-size:1.02rem;
+  }
+  .contact-points{ margin-top:var(--space-6); display:flex; flex-direction:column; gap:var(--space-4); }
+  .contact-point{ display:flex; align-items:center; gap:.85rem; }
+  .contact-point .ic{
+    width:42px; height:42px; border-radius:11px;
+    background:rgba(255,255,255,.08);
+    color:var(--accent-400);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-point strong{ display:block; color:var(--white); font-size:.92rem; }
+  .contact-point span{ display:block; color:rgba(255,255,255,.55); font-size:.85rem; }
+
+  .contact-form{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-radius:var(--radius-lg);
+    padding:var(--space-6);
+  }
+  .form-row{
+    display:grid;
+    gap:var(--space-4);
+  }
+  @media(min-width:560px){
+    .form-row.two{ grid-template-columns:1fr 1fr; }
+  }
+  .field{ margin-bottom:var(--space-4); }
+  .field label{
+    display:block;
+    font-size:.8rem;
+    font-weight:600;
+    color:rgba(255,255,255,.7);
+    margin-bottom:.45rem;
+  }
+  .field input,
+  .field select,
+  .field textarea{
+    width:100%;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--radius-sm);
+    padding:.8rem .9rem;
+    color:var(--white);
+    font-family:inherit;
+    font-size:.92rem;
+    transition: border-color .25s var(--ease), background-color .25s var(--ease);
+  }
+  .field select{ color:var(--white); }
+  .field select option{ color:var(--ink-950); }
+  .field input::placeholder, .field textarea::placeholder{ color:rgba(255,255,255,.35); }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{
+    outline:none;
+    border-color:var(--accent-400);
+    background:rgba(255,255,255,.1);
+  }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .contact-form .btn{ width:100%; margin-top:var(--space-1); }
+  .form-fine{
+    font-size:.78rem;
+    color:rgba(255,255,255,.4);
+    margin-top:var(--space-3);
+    text-align:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink-950);
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-block: var(--space-6);
+  }
+  .footer-grid{
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-5);
+    align-items:flex-start;
+    justify-content:space-between;
+  }
+  @media(min-width:760px){
+    .footer-grid{ flex-direction:row; align-items:center; }
+  }
+  .footer-brand{
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--white);
+  }
+  .footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--space-5);
+    font-size:.85rem;
+    color:rgba(255,255,255,.55);
+  }
+  .footer-links a{ text-decoration:none; }
+  .footer-links a:hover{ color:var(--white); }
+  .footer-copy{
+    font-size:.8rem;
+    color:rgba(255,255,255,.35);
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="#fff"/></svg>
+      </span>
+      Strata
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Results</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+15551234567">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        (555) 123-4567
+      </a>
+      <a href="#contact" class="btn btn-primary btn-sm">Book Now</a>
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Toggle navigation menu">
+        <svg class="icon-bars" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </label>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-blob b1" aria-hidden="true"></div>
+  <div class="hero-blob b2" aria-hidden="true"></div>
+  <div class="hero-blob b3" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Electricians &amp; Plumbers</span>
+      <h1>Stop Guessing. Start <em>Booking&nbsp;Jobs.</em></h1>
+      <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Book Your Free Strategy Call</a>
+        <span class="hero-note">15 minutes. No pressure, just a plan.</span>
+      </div>
+      <div class="hero-trust">
+        <div>
+          <strong>120+</strong>
+          <span>Trades websites launched</span>
+        </div>
+        <div>
+          <strong>4.9★</strong>
+          <span>Avg. client rating</span>
+        </div>
+        <div>
+          <strong>3.2×</strong>
+          <span>Avg. lead increase</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card reveal">
+      <div class="hero-card-top">
+        <span>Local Pack Ranking</span>
+        <span class="pulse-dot" aria-hidden="true"></span>
+      </div>
+      <div class="hero-card-stat">+186<span>%</span></div>
+      <p class="hero-card-sub">Booked calls, 90 days after launch — average across active clients.</p>
+      <div class="hero-card-bars" aria-hidden="true">
+        <i style="height:35%"></i>
+        <i style="height:52%"></i>
+        <i style="height:44%"></i>
+        <i style="height:68%"></i>
+        <i style="height:60%"></i>
+        <i style="height:88%"></i>
+        <i style="height:100%"></i>
+      </div>
+      <div class="hero-card-foot">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        Next opening: Tuesday, 10:00 AM
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How It Works</span>
+        <h2 class="section-title">Three steps to a full schedule.</h2>
+        <p>No jargon, no 40-page proposals. Just a clear path from "empty week" to "fully booked."</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          </div>
+          <div class="step-num">Step 01</div>
+          <h3>Free Strategy Call</h3>
+          <p>We look at your current site, your service area, and what your competitors rank for — then show you exactly what's costing you jobs.</p>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
+          </div>
+          <div class="step-num">Step 02</div>
+          <h3>We Build &amp; Launch</h3>
+          <p>Your new site, tracking, and local SEO foundation go live — fully mobile-responsive, fast, and set up to rank in every city you serve.</p>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          </div>
+          <div class="step-num">Step 03</div>
+          <h3>Leads Start Rolling In</h3>
+          <p>Calls, form fills, and reviews get tracked and reported monthly, so you always know exactly where your next job is coming from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What's Included</span>
+        <h2 class="section-title">Everything it takes to fill the calendar.</h2>
+        <p>Three pillars, working together — a site that converts, a presence that gets found, and reporting that proves it's working.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Built to Convert</h3>
+          <p>A site that loads fast and turns visitors into booked calls.</p>
+          <ul class="pillar-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mobile-responsive design</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fast load times</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Clear, action-driven CTAs</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SSL certificate, standard</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Security &amp; plugin updates</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>24/7 uptime monitoring</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Weekly automated backups</li>
+          </ul>
+        </div>
+
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>Built to Get Found</h3>
+          <p>SEO that gets you ranking in every town you actually work in.</p>
+          <ul class="pillar-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>On-page SEO</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Keyword research</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multi-city / service-area targeting</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Citation &amp; directory management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ongoing blog content</li>
+          </ul>
+        </div>
+
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg>
+          </div>
+          <h3>Built to Prove ROI</h3>
+          <p>Know exactly which jobs came from where — and your reputation while it builds.</p>
+          <ul class="pillar-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Call tracking</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lead source reporting</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Analytics &amp; conversion tracking</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reputation &amp; review management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Review response handling</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automated review generation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2 class="section-title">Pick your pace. Cancel-anytime, no contracts.</h2>
+        <p style="margin-inline:auto;">Every plan includes a mobile-responsive, SSL-secured site with weekly backups and 24/7 monitoring. Upgrade or downgrade anytime as your schedule fills up.</p>
+      </div>
+
+      <div class="plans">
+        <div class="plan reveal">
+          <span class="plan-name">Starter</span>
+          <p class="plan-desc">Get a real, professional presence live and working.</p>
+          <div class="plan-price"><span class="amount">$497</span><span class="period">/ month</span></div>
+          <ul class="plan-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>New website build</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Hosting included</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Google Business Profile setup</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Basic on-page SEO</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Service &amp; area pages</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark">Get Started</a>
+        </div>
+
+        <div class="plan plan-featured reveal">
+          <span class="plan-badge">Most Popular</span>
+          <span class="plan-name">Growth</span>
+          <p class="plan-desc">For trades ready to consistently outrank the competition.</p>
+          <div class="plan-price"><span class="amount">$949</span><span class="period">/ month</span></div>
+          <ul class="plan-list">
+            <li class="included-all">Everything in Starter, plus:</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Local SEO</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly blog content</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Blog content reviews</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Citation management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Geotagged job-site check-ins</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Get Started</a>
+        </div>
+
+        <div class="plan reveal">
+          <span class="plan-name">Dominate</span>
+          <p class="plan-desc">For teams ready to own every city they serve.</p>
+          <div class="plan-price"><span class="amount">$1,749</span><span class="period">/ month</span></div>
+          <ul class="plan-list">
+            <li class="included-all">Everything in Growth, plus:</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Paid Google Ads management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Expanded site content</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multi-area targeting</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>30+ blog posts / month</li>
+          </ul>
+          <a href="#contact" class="btn btn-dark">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Results</span>
+        <h2 class="section-title">Trades who stopped chasing leads.</h2>
+      </div>
+      <div class="t-grid">
+        <div class="t-card reveal">
+          <div class="t-stars" aria-hidden="true">★★★★★</div>
+          <p class="t-quote">"We went from maybe two calls a week to a booked-out schedule in under three months. Strata's the first agency that actually understood what an electrician needs."</p>
+          <div class="t-person">
+            <div class="t-avatar">RE</div>
+            <div><strong>Marcus Rivera</strong><span>Rivera Electric — Austin, TX</span></div>
+          </div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-stars" aria-hidden="true">★★★★★</div>
+          <p class="t-quote">"The review system alone paid for itself. We're getting 4-5 new Google reviews a week without lifting a finger, and it shows in how fast the phone rings now."</p>
+          <div class="t-person">
+            <div class="t-avatar">CP</div>
+            <div><strong>Dana Cascade</strong><span>Cascade Plumbing Co. — Portland, OR</span></div>
+          </div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-stars" aria-hidden="true">★★★★★</div>
+          <p class="t-quote">"I finally know which jobs come from the website versus word of mouth. That reporting alone changed how I spend my marketing dollars."</p>
+          <div class="t-person">
+            <div class="t-avatar">BE</div>
+            <div><strong>Jordan Blake</strong><span>BrightSpark Electrical — Columbus, OH</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="eyebrow">Book Now</span>
+          <h2>Let's fill your schedule.</h2>
+          <p>Tell us about your trade and your service area. We'll come to the call with a real plan, not a sales pitch.</p>
+          <div class="contact-points">
+            <div class="contact-point">
+              <span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+              <div><strong>(555) 123-4567</strong><span>Mon–Fri, 8am–6pm</span></div>
+            </div>
+            <div class="contact-point">
+              <span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></span>
+              <div><strong>hello@stratadigital.co</strong><span>Replies within one business day</span></div>
+            </div>
+            <div class="contact-point">
+              <span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><strong>Serving trades nationwide</strong><span>Local, multi-city &amp; regional targeting</span></div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" action="#" method="post">
+          <div class="form-row two">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="John Alvarez" required>
+            </div>
+            <div class="field">
+              <label for="company">Company name</label>
+              <input id="company" name="company" type="text" placeholder="Alvarez Plumbing &amp; Drain">
+            </div>
+          </div>
+          <div class="form-row two">
+            <div class="field">
+              <label for="trade">Trade</label>
+              <select id="trade" name="trade" required>
+                <option value="">Select one</option>
+                <option value="electrician">Electrician</option>
+                <option value="plumber">Plumber</option>
+                <option value="other">Other trade</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          </div>
+          <div class="field">
+            <label for="message">What's going on with your schedule right now?</label>
+            <textarea id="message" name="message" placeholder="e.g. Slow winter months, no website, inconsistent reviews..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Request My Free Strategy Call</button>
+          <p class="form-fine">No spam, no obligation — just a straight answer on what it'll take to fill your calendar.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <a href="#top" class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="#fff"/></svg>
+      </span>
+      Strata Digital Marketing
+    </a>
+    <div class="footer-links">
+      <a href="#how">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Results</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span class="footer-copy">© 2026 Strata Digital Marketing. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  var navToggle = document.getElementById('nav-toggle');
+  if(navToggle){
+    document.querySelectorAll('.nav-links a').forEach(function(link){
+      link.addEventListener('click', function(){ navToggle.checked = false; });
+    });
+  }
+  if('IntersectionObserver' in window){
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    document.documentElement.classList.remove('js');
+  }
+</script>
+
+</body>
+</html>
