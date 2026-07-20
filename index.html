@@ -638,6 +638,10 @@
     transform:translateY(0);
   }
   html.js .reveal-stagger.is-visible > *{ transition-delay: calc(var(--i, 0) * 90ms); }
+  html.js .reveal.reveal-left{ transform:translateX(-32px); }
+  html.js .reveal.reveal-right{ transform:translateX(32px); }
+  html.js .reveal.reveal-left.is-visible,
+  html.js .reveal.reveal-right.is-visible{ transform:translateX(0); }
 
   /* ---------- HOW IT WORKS ---------- */
   .how{ padding-block: var(--section-pad); }
@@ -1205,7 +1209,7 @@
     <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
   </div>
   <div class="wrap">
-    <div class="reveal">
+    <div class="reveal reveal-left">
       <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Electricians &amp; Plumbers</span>
       <h1>Stop the Empty Weeks. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
@@ -1216,7 +1220,7 @@
       <span class="hero-note">15 minutes. No pressure, just a plan.</span>
     </div>
 
-    <div class="hero-card reveal">
+    <div class="hero-card reveal reveal-right">
       <div class="hero-card-top">
         <span>Local Pack Ranking</span>
         <span class="pulse-dot" aria-hidden="true"></span>
@@ -1594,7 +1598,7 @@
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="contact-grid">
-        <div class="contact-info reveal">
+        <div class="contact-info reveal reveal-left">
           <span class="urgency-badge"><span class="pulse-dot" aria-hidden="true"></span>Limited spots this week</span>
           <span class="eyebrow">Free 30-Minute Discovery Call</span>
           <h2>Claim your spot today.</h2>
@@ -1615,7 +1619,7 @@
           </div>
         </div>
 
-        <form class="contact-form reveal" action="#" method="post">
+        <form class="contact-form reveal reveal-right" action="#" method="post">
           <div class="form-row two">
             <div class="field">
               <label for="name">Full name</label>
