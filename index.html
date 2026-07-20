@@ -1247,22 +1247,22 @@
     </div>
     <div class="agitation-grid">
       <div class="agitation-card reveal">
-        <span class="agitation-stat shine-num">59.16%</span>
+        <span class="agitation-stat shine-num count-up">59.16%</span>
         <h3>Mobile Traffic Rules</h3>
         <p>Of all global website traffic now comes from a phone. If your site isn't built responsive and mobile-first, most homeowners searching for you never see it the way it was meant to look.</p>
       </div>
       <div class="agitation-card reveal">
-        <span class="agitation-stat shine-num">200%</span>
+        <span class="agitation-stat shine-num count-up">200%</span>
         <h3>Design Drives Revenue</h3>
         <p>A well-designed interface can lift conversion rates by up to 200%. Good design isn't decoration — it's one of the highest-leverage things affecting how many calls you actually book.</p>
       </div>
       <div class="agitation-card reveal">
-        <span class="agitation-stat shine-num">88%</span>
+        <span class="agitation-stat shine-num count-up">88%</span>
         <h3>Slow Sites Get Abandoned</h3>
         <p>Of users say slow load times are the main reason they leave a website. Impressive photos don't matter if visitors are gone before the page even finishes loading.</p>
       </div>
       <div class="agitation-card reveal">
-        <span class="agitation-stat shine-num">40%+</span>
+        <span class="agitation-stat shine-num count-up">40%+</span>
         <h3>Visuals Are the First Impression</h3>
         <p>Of consumers say images are the most important part of a website's design. Grainy job-site photos and stock clip art quietly tell visitors to keep scrolling to a competitor.</p>
       </div>
@@ -1677,12 +1677,33 @@
       link.addEventListener('click', function(){ navToggle.checked = false; });
     });
   }
+  function animateCount(el){
+    var end = el.textContent.trim();
+    var match = end.match(/^([\d.,]+)(.*)$/);
+    if(!match) return;
+    var target = parseFloat(match[1].replace(/,/g, ''));
+    var suffix = match[2];
+    var decimals = (match[1].split('.')[1] || '').length;
+    var duration = 1300;
+    var start = null;
+    function step(ts){
+      if(start === null) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = (target * eased).toFixed(decimals) + suffix;
+      if(progress < 1){ requestAnimationFrame(step); }
+      else { el.textContent = end; }
+    }
+    requestAnimationFrame(step);
+  }
+
   if('IntersectionObserver' in window){
     var els = document.querySelectorAll('.reveal');
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(entry.isIntersecting){
           entry.target.classList.add('is-visible');
+          entry.target.querySelectorAll('.count-up').forEach(animateCount);
           io.unobserve(entry.target);
         }
       });
