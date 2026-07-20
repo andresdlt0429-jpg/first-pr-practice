@@ -410,45 +410,33 @@
     background:#5be08a;
     box-shadow:0 0 0 4px rgba(91,224,138,.2);
   }
-  .hero-card-stat{
-    font-family:var(--font-display);
-    font-size:2.75rem;
+  .hero-form-title{
     color:var(--white);
-    line-height:1;
+    font-size:1.15rem;
+    line-height:1.4;
+    margin-bottom:var(--space-5);
   }
-  .hero-card-stat span{
-    color:var(--accent-400);
+  .hero-form .field{ margin-bottom:.85rem; }
+  .hero-form-submit{ width:100%; margin-top:.35rem; }
+  .hero-form-fine{
+    margin-top:var(--space-4);
+    text-align:center;
+    font-size:.78rem;
+    color:rgba(255,255,255,.5);
   }
-  .hero-card-sub{
-    color:rgba(255,255,255,.6);
-    font-size:.9rem;
-    margin-top:.5rem;
-  }
-  .hero-card-bars{
-    display:flex;
-    align-items:flex-end;
-    gap:8px;
-    height:64px;
-    margin-top:var(--space-5);
-  }
-  .hero-card-bars i{
-    flex:1;
-    display:block;
-    border-radius:5px 5px 2px 2px;
-    background: linear-gradient(180deg, var(--accent-400), var(--accent-700));
-    opacity:.85;
-  }
-  .hero-card-foot{
-    display:flex;
+  .hero-secondary-link{
+    display:inline-flex;
     align-items:center;
-    gap:.6rem;
+    gap:.4rem;
     margin-top:var(--space-5);
-    padding-top:var(--space-5);
-    border-top:1px solid rgba(255,255,255,.14);
-    font-size:.85rem;
-    color:rgba(255,255,255,.7);
+    font-size:.9rem;
+    font-weight:600;
+    color:rgba(255,255,255,.75);
+    text-decoration:none;
   }
-  .hero-card-foot svg{ flex-shrink:0; }
+  .hero-secondary-link svg{ transition:transform .25s var(--ease); }
+  .hero-secondary-link:hover{ color:var(--accent-400); }
+  .hero-secondary-link:hover svg{ transform:translateX(4px); }
 
   /* ---------- STATS BAND ---------- */
   .stats{
@@ -869,6 +857,64 @@
   .t-person strong{ display:block; font-size:.9rem; color:var(--ink-950); }
   .t-person span{ display:block; font-size:.8rem; color:var(--slate-500); }
 
+  /* ---------- FAQ ---------- */
+  .faq{ padding-block: var(--section-pad); background:var(--paper); }
+  .faq-list{
+    max-width:760px;
+    margin-inline:auto;
+    display:flex;
+    flex-direction:column;
+    gap:var(--space-3);
+  }
+  .faq-item{
+    background:var(--white);
+    border:1px solid var(--paper-line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .faq-item[open]{
+    border-color:rgba(242,98,44,.3);
+    box-shadow: var(--shadow-soft);
+  }
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:var(--space-4);
+    padding:var(--space-5);
+    font-weight:600;
+    font-size:1rem;
+    color:var(--ink-950);
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-icon{
+    flex-shrink:0;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--paper-dim);
+    color:var(--accent-600);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: transform .3s var(--ease), background-color .3s var(--ease);
+  }
+  .faq-item[open] .faq-icon{
+    transform:rotate(45deg);
+    background:var(--accent-600);
+    color:var(--white);
+  }
+  .faq-answer{
+    padding:0 var(--space-5) var(--space-5);
+    margin:0;
+    color:var(--slate-500);
+    font-size:.95rem;
+    line-height:1.7;
+  }
+
   /* ---------- CONTACT ---------- */
   .contact{ padding-block: var(--section-pad); background:var(--ink-950); position:relative; overflow:hidden; }
   .contact::before{
@@ -982,6 +1028,46 @@
     text-align:center;
   }
 
+  /* ---------- FLOATING CTA ---------- */
+  .floating-cta{
+    position:fixed;
+    right:1.15rem;
+    bottom:1.15rem;
+    z-index:90;
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+    background:var(--ink-950);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,.14);
+    padding:.85rem 1.3rem;
+    border-radius:999px;
+    font-size:.88rem;
+    font-weight:700;
+    text-decoration:none;
+    box-shadow: 0 16px 36px -14px rgba(0,0,0,.55);
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), opacity .25s var(--ease);
+  }
+  .floating-cta:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 20px 42px -14px rgba(0,0,0,.6);
+  }
+  /* shown only once JS confirms we've scrolled clear of the hero's own form
+     and the bottom contact form isn't already on screen */
+  .floating-cta{
+    opacity:0;
+    transform:translateY(14px) scale(.95);
+    pointer-events:none;
+  }
+  html.js .floating-cta.is-visible{
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+  }
+  @media(max-width:480px){
+    .floating-cta{ right:1rem; bottom:1rem; padding:.75rem 1.1rem; font-size:.82rem; }
+  }
+
   /* ---------- FOOTER ---------- */
   footer{
     background:var(--ink-950);
@@ -1063,33 +1149,35 @@
       <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Electricians &amp; Plumbers</span>
       <h1>Stop Guessing. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Claim My Free Strategy Call</a>
-        <a href="#testimonials" class="btn btn-ghost">See Results</a>
-      </div>
+      <a href="#testimonials" class="hero-secondary-link">
+        See Results
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
       <span class="hero-note">15 minutes. No pressure, just a plan.</span>
     </div>
 
     <div class="hero-card reveal">
       <div class="hero-card-top">
-        <span>Local Pack Ranking</span>
+        <span>Free 30-Minute Discovery Call</span>
         <span class="pulse-dot" aria-hidden="true"></span>
       </div>
-      <div class="hero-card-stat">+186<span>%</span></div>
-      <p class="hero-card-sub">Booked calls, 90 days after launch — average across active clients.</p>
-      <div class="hero-card-bars" aria-hidden="true">
-        <i style="height:35%"></i>
-        <i style="height:52%"></i>
-        <i style="height:44%"></i>
-        <i style="height:68%"></i>
-        <i style="height:60%"></i>
-        <i style="height:88%"></i>
-        <i style="height:100%"></i>
-      </div>
-      <div class="hero-card-foot">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-        Next opening: Tuesday, 10:00 AM
-      </div>
+      <h3 class="hero-form-title">Claim your spot before this week fills up.</h3>
+      <form class="hero-form" action="#" method="post">
+        <div class="field">
+          <label for="hero-name">Full name</label>
+          <input id="hero-name" name="name" type="text" placeholder="John Alvarez" required>
+        </div>
+        <div class="field">
+          <label for="hero-phone">Phone number</label>
+          <input id="hero-phone" name="phone" type="tel" placeholder="(555) 123-4567" required>
+        </div>
+        <div class="field">
+          <label for="hero-email">Email</label>
+          <input id="hero-email" name="email" type="email" placeholder="you@company.com" required>
+        </div>
+        <button type="submit" class="btn btn-primary hero-form-submit">Claim My Spot</button>
+      </form>
+      <p class="hero-form-fine">Only a few discovery calls available each week.</p>
     </div>
   </div>
 </header>
@@ -1340,6 +1428,59 @@
     </div>
   </section>
 
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Questions people ask before booking.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>
+            What actually happens on the discovery call?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">We'll look at your current website (if you have one), your service area, and where your competitors are outranking you. You'll leave with a clear picture of what's costing you jobs and what it would take to fix it — no slideshow, no hard pitch.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Do I need a brand-new website, or can you work with what I have?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">It depends on what we find. Sometimes a handful of fixes to your existing site solves the problem. Other times a rebuild is the faster path. We'll tell you honestly which one you need — we don't push a rebuild if you don't need one.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            How fast will I actually see results?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">Most clients have their new site live within 2–3 weeks. Local SEO movement typically shows up within the first 60–90 days, and it keeps compounding from there — this is an ongoing system, not a one-and-done fix.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Do you lock me into a long-term contract?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">No. Every plan is month-to-month and you can cancel anytime. We keep clients because the leads keep coming in, not because of a contract holding them there.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            What if I'm already working with another marketing company?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">That's fine — bring what they've built to the call. We'll give you a straight read on what's working, what isn't, and whether switching actually makes sense for your business.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            How much does it cost to get started?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">Plans start at $497/month for a new site build, hosting, and basic local SEO. We'll recommend the right tier for where your business is at right now on the call — no pressure to jump to the top package.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="contact" id="contact">
     <div class="wrap">
       <div class="contact-grid">
@@ -1446,6 +1587,11 @@
   </div>
 </footer>
 
+<a href="#contact" class="floating-cta" id="floating-cta">
+  <span class="pulse-dot" aria-hidden="true"></span>
+  Claim My Spot
+</a>
+
 <script>
   document.documentElement.classList.add('js');
   var navToggle = document.getElementById('nav-toggle');
@@ -1465,6 +1611,20 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     els.forEach(function(el){ io.observe(el); });
+
+    var floatingCta = document.getElementById('floating-cta');
+    var ctaHideZones = [document.getElementById('top'), document.getElementById('contact')].filter(Boolean);
+    if(floatingCta && ctaHideZones.length){
+      var zoneState = {};
+      var ctaIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          zoneState[entry.target.id] = entry.isIntersecting;
+        });
+        var inHideZone = ctaHideZones.some(function(zone){ return zoneState[zone.id]; });
+        floatingCta.classList.toggle('is-visible', !inHideZone);
+      }, { threshold: 0.2 });
+      ctaHideZones.forEach(function(zone){ ctaIo.observe(zone); });
+    }
   } else {
     document.documentElement.classList.remove('js');
   }
