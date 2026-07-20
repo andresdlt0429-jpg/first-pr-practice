@@ -376,9 +376,26 @@
     margin-top:var(--space-6);
   }
   .hero-note{
+    display:block;
     font-size:.85rem;
     color:rgba(255,255,255,.5);
+    margin-top:var(--space-3);
   }
+  .hero-proof{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    margin-top:var(--space-4);
+    font-size:.875rem;
+    font-weight:600;
+    color:rgba(255,255,255,.75);
+    text-decoration:none;
+  }
+  .hero-proof svg{
+    transition: transform .25s var(--ease);
+  }
+  .hero-proof:hover{ color:var(--accent-400); }
+  .hero-proof:hover svg{ transform:translateX(4px); }
   .hero-trust{
     display:flex;
     flex-wrap:wrap;
@@ -942,9 +959,14 @@
       <h1>Stop Guessing. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Book Your Free Strategy Call</a>
-        <span class="hero-note">15 minutes. No pressure, just a plan.</span>
+        <a href="#contact" class="btn btn-primary">Claim My Free Strategy Call</a>
+        <a href="#contact" class="btn btn-ghost">Book Now</a>
       </div>
+      <span class="hero-note">15 minutes. No pressure, just a plan.</span>
+      <a href="#testimonials" class="hero-proof">
+        See why others are having so much success
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
       <div class="hero-trust">
         <div>
           <strong>120+</strong>
@@ -1147,7 +1169,8 @@
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Results</span>
-        <h2 class="section-title">Trades who stopped chasing leads.</h2>
+        <h2 class="section-title">See why others are having so much success.</h2>
+        <p style="margin-inline:auto;">Real electricians and plumbers, real schedules — before Strata and after.</p>
       </div>
       <div class="t-grid">
         <div class="t-card reveal">
