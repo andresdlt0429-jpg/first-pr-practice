@@ -74,6 +74,7 @@
   button{ font-family:inherit; }
 
   .wrap{
+    position:relative;
     width:100%;
     max-width:1180px;
     margin-inline:auto;
@@ -334,19 +335,23 @@
     opacity:.35;
     pointer-events:none;
   }
-  .hero-bolt-mark{
+  /* shared centered watermark, repeated behind every section */
+  .bg-bolt{
     position:absolute;
-    top:6%;
-    right:-6%;
-    width:clamp(340px, 36vw, 600px);
-    height:clamp(340px, 36vw, 600px);
-    opacity:.09;
-    transform:rotate(-10deg);
-    filter: drop-shadow(0 40px 70px rgba(0,0,0,.55));
+    top:50%;
+    left:50%;
+    width:clamp(480px, 52vw, 880px);
+    height:clamp(480px, 52vw, 880px);
+    opacity:.1;
+    transform:translate(-50%, -50%) rotate(-8deg);
+    filter: drop-shadow(0 40px 70px rgba(0,0,0,.5));
     pointer-events:none;
-    z-index:1;
+    z-index:0;
   }
-  .hero-bolt-mark svg{ width:100%; height:100%; display:block; }
+  .bg-bolt.bg-bolt--soft{
+    filter: drop-shadow(0 30px 50px rgba(201,74,29,.18));
+  }
+  .bg-bolt svg{ width:100%; height:100%; display:block; }
   .hero .wrap{
     position:relative;
     z-index:2;
@@ -453,6 +458,8 @@
 
   /* ---------- STATS BAND ---------- */
   .stats{
+    position:relative;
+    overflow:hidden;
     background:var(--ink-950);
     border-top:1px solid rgba(255,255,255,.1);
     padding-block: clamp(2.5rem, 2rem + 2vw, 4rem);
@@ -594,7 +601,7 @@
   html.js .reveal-stagger.is-visible > *{ transition-delay: calc(var(--i, 0) * 90ms); }
 
   /* ---------- HOW IT WORKS ---------- */
-  .how{ padding-block: var(--section-pad); }
+  .how{ position:relative; overflow:hidden; padding-block: var(--section-pad); }
   .steps{
     display:grid;
     gap: var(--space-6);
@@ -731,7 +738,7 @@
   }
 
   /* ---------- PRICING ---------- */
-  .pricing{ padding-block: var(--section-pad); background:var(--paper); }
+  .pricing{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper); }
   .plans{
     display:grid;
     gap:var(--space-5);
@@ -828,7 +835,7 @@
   .plan .btn{ width:100%; }
 
   /* ---------- TESTIMONIALS ---------- */
-  .testimonials{ padding-block: var(--section-pad); background:var(--paper-dim); }
+  .testimonials{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper-dim); }
   .t-grid{
     display:grid;
     gap:var(--space-5);
@@ -871,7 +878,7 @@
   .t-person span{ display:block; font-size:.8rem; color:var(--slate-500); }
 
   /* ---------- FAQ ---------- */
-  .faq{ padding-block: var(--section-pad); background:var(--paper); }
+  .faq{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper); }
   .faq-list{
     max-width:760px;
     margin-inline:auto;
@@ -1083,6 +1090,8 @@
 
   /* ---------- FOOTER ---------- */
   footer{
+    position:relative;
+    overflow:hidden;
     background:var(--ink-950);
     border-top:1px solid rgba(255,255,255,.1);
     padding-block: var(--space-6);
@@ -1122,6 +1131,16 @@
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffb98a"/>
+      <stop offset="45%" stop-color="#ff7a34"/>
+      <stop offset="100%" stop-color="#c94a1d"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <nav class="site-nav">
   <div class="wrap">
     <a href="#top" class="brand">
@@ -1157,17 +1176,8 @@
   <div class="hero-blob b2" aria-hidden="true"></div>
   <div class="hero-blob b3" aria-hidden="true"></div>
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-bolt-mark" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none">
-      <defs>
-        <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#ffb98a"/>
-          <stop offset="45%" stop-color="#ff7a34"/>
-          <stop offset="100%" stop-color="#c94a1d"/>
-        </linearGradient>
-      </defs>
-      <path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/>
-    </svg>
+  <div class="bg-bolt" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
   </div>
   <div class="wrap">
     <div class="reveal">
@@ -1235,6 +1245,9 @@
 </header>
 
 <section class="stats">
+  <div class="bg-bolt" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+  </div>
   <div class="wrap">
     <div class="stats-grid reveal-stagger reveal">
       <div class="stat" style="--i:0">
@@ -1254,6 +1267,9 @@
 </section>
 
 <section class="agitation" id="agitation">
+  <div class="bg-bolt" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+  </div>
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">The Website Standard For 2026</span>
@@ -1289,6 +1305,9 @@
 <main>
 
   <section class="how" id="how">
+    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">How It Works</span>
@@ -1328,6 +1347,9 @@
   </section>
 
   <section class="services" id="services">
+    <div class="bg-bolt" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">What's Included</span>
@@ -1388,6 +1410,9 @@
   </section>
 
   <section class="pricing" id="pricing">
+    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Pricing</span>
@@ -1445,6 +1470,9 @@
   </section>
 
   <section class="testimonials" id="testimonials">
+    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Results</span>
@@ -1481,6 +1509,9 @@
   </section>
 
   <section class="faq" id="faq">
+    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">FAQ</span>
@@ -1541,6 +1572,9 @@
   </section>
 
   <section class="contact" id="contact">
+    <div class="bg-bolt" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+    </div>
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info reveal">
@@ -1628,6 +1662,9 @@
 </main>
 
 <footer>
+  <div class="bg-bolt" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
+  </div>
   <div class="wrap footer-grid">
     <a href="#top" class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
