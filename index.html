@@ -485,12 +485,95 @@
     color:var(--accent-400);
   }
   .stat-unit{ font-size:.8em; }
+
+  /* reflective/foil accent number treatment, with solid-color fallback */
+  .shine-num{
+    color:var(--accent-400);
+    filter: drop-shadow(0 3px 10px rgba(242,98,44,.3));
+  }
+  @supports ((background-clip:text) or (-webkit-background-clip:text)){
+    .shine-num{
+      background: linear-gradient(115deg, #c94a1d 8%, #ff7a34 28%, #ffe0c2 48%, #ff8a45 62%, #b8410f 80%, #ff9d5c 100%);
+      background-size: 220% 220%;
+      background-position: 30% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
   .stat-label{
     font-size:.85rem;
     font-weight:600;
     letter-spacing:.04em;
     text-transform:uppercase;
     color:rgba(255,255,255,.6);
+  }
+
+  /* ---------- AGITATION ---------- */
+  .agitation{
+    background:var(--ink-950);
+    padding-block: var(--section-pad);
+    position:relative;
+    overflow:hidden;
+  }
+  .agitation::before{
+    content:"";
+    position:absolute;
+    bottom:-25%; left:-10%;
+    width:760px; height:760px;
+    background: radial-gradient(circle, rgba(242,98,44,.14), transparent 65%);
+    pointer-events:none;
+  }
+  .agitation .section-head h2, .agitation .eyebrow{ color:var(--white); }
+  .agitation .eyebrow{ color:var(--accent-400); }
+  .agitation .eyebrow::before{ background:var(--accent-400); }
+  .agitation .section-head p{ color:rgba(255,255,255,.6); }
+  .agitation-grid{
+    position:relative;
+    display:grid;
+    gap:var(--space-5);
+  }
+  @media(min-width:700px){
+    .agitation-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  .agitation-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:var(--radius-md);
+    padding:var(--space-6) var(--space-5);
+    transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+  }
+  .agitation-card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.065);
+    border-color:rgba(255,255,255,.2);
+  }
+  .agitation-stat{
+    font-family:var(--font-display);
+    font-weight:800;
+    font-size:clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    line-height:1;
+    display:block;
+    margin-bottom:var(--space-3);
+  }
+  .agitation-card h3{
+    color:var(--white);
+    font-size:1.15rem;
+    margin-bottom:.5rem;
+  }
+  .agitation-card p{
+    color:rgba(255,255,255,.6);
+    font-size:.92rem;
+    line-height:1.65;
+  }
+  .agitation-source{
+    position:relative;
+    margin-top:var(--space-6);
+    text-align:center;
+    font-size:.78rem;
+    font-style:italic;
+    color:rgba(255,255,255,.4);
   }
 
   /* ---------- REVEAL / MOTION ---------- */
@@ -1015,18 +1098,51 @@
   <div class="wrap">
     <div class="stats-grid reveal-stagger reveal">
       <div class="stat" style="--i:0">
-        <span class="stat-num">120+</span>
+        <span class="stat-num shine-num">120+</span>
         <span class="stat-label">Trades websites launched</span>
       </div>
       <div class="stat" style="--i:1">
-        <span class="stat-num">4.9<span class="stat-unit">★</span></span>
+        <span class="stat-num shine-num">4.9<span class="stat-unit">★</span></span>
         <span class="stat-label">Avg. client rating</span>
       </div>
       <div class="stat" style="--i:2">
-        <span class="stat-num">3.2<span class="stat-unit">×</span></span>
+        <span class="stat-num shine-num">3.2<span class="stat-unit">×</span></span>
         <span class="stat-label">Avg. lead increase</span>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="agitation" id="agitation">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">The Website Standard For 2026</span>
+      <h2 class="section-title">Your Website Is Either Winning You Jobs — Or Losing Them.</h2>
+      <p style="margin-inline:auto;">Homeowners judge an electrician or plumber before they ever pick up the phone. Here's what the data says about the sites that lose that judgment call.</p>
+    </div>
+    <div class="agitation-grid">
+      <div class="agitation-card reveal">
+        <span class="agitation-stat shine-num">59.16%</span>
+        <h3>Mobile Traffic Rules</h3>
+        <p>Of all global website traffic now comes from a phone. If your site isn't built responsive and mobile-first, most homeowners searching for you never see it the way it was meant to look.</p>
+      </div>
+      <div class="agitation-card reveal">
+        <span class="agitation-stat shine-num">200%</span>
+        <h3>Design Drives Revenue</h3>
+        <p>A well-designed interface can lift conversion rates by up to 200%. Good design isn't decoration — it's one of the highest-leverage things affecting how many calls you actually book.</p>
+      </div>
+      <div class="agitation-card reveal">
+        <span class="agitation-stat shine-num">88%</span>
+        <h3>Slow Sites Get Abandoned</h3>
+        <p>Of users say slow load times are the main reason they leave a website. Impressive photos don't matter if visitors are gone before the page even finishes loading.</p>
+      </div>
+      <div class="agitation-card reveal">
+        <span class="agitation-stat shine-num">40%+</span>
+        <h3>Visuals Are the First Impression</h3>
+        <p>Of consumers say images are the most important part of a website's design. Grainy job-site photos and stock clip art quietly tell visitors to keep scrolling to a competitor.</p>
+      </div>
+    </div>
+    <p class="agitation-source">Sources: aggregated 2024–2026 web performance, UX, and consumer behavior research.</p>
   </div>
 </section>
 
