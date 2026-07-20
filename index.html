@@ -796,7 +796,21 @@
   @media(min-width:920px){
     .contact-grid{ grid-template-columns: .9fr 1.1fr; align-items:start; }
   }
-  .contact-info .eyebrow{ color:var(--accent-400); }
+  .urgency-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(242,98,44,.14);
+    border:1px solid rgba(242,98,44,.35);
+    color:var(--accent-400);
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:.4rem .8rem;
+    border-radius:999px;
+    margin-bottom:var(--space-4);
+  }
+  .contact-info .eyebrow{ color:var(--accent-400); display:block; margin-top:0; }
   .contact-info .eyebrow::before{ background:var(--accent-400); }
   .contact-info h2{
     color:var(--white);
@@ -1205,9 +1219,10 @@
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info reveal">
-          <span class="eyebrow">Book Now</span>
-          <h2>Let's fill your schedule.</h2>
-          <p>Tell us about your trade and your service area. We'll come to the call with a real plan, not a sales pitch.</p>
+          <span class="urgency-badge"><span class="pulse-dot" aria-hidden="true"></span>Limited spots this week</span>
+          <span class="eyebrow">Free 30-Minute Discovery Call</span>
+          <h2>Claim your spot today.</h2>
+          <p>We only take a handful of discovery calls each week so every one gets our full attention. Tell us about your business and we'll come to the call with a real plan — not a sales pitch.</p>
           <div class="contact-points">
             <div class="contact-point">
               <span class="ic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
@@ -1231,35 +1246,34 @@
               <input id="name" name="name" type="text" placeholder="John Alvarez" required>
             </div>
             <div class="field">
-              <label for="company">Company name</label>
-              <input id="company" name="company" type="text" placeholder="Alvarez Plumbing &amp; Drain">
+              <label for="business">Business name</label>
+              <input id="business" name="business" type="text" placeholder="Alvarez Plumbing &amp; Drain" required>
             </div>
           </div>
           <div class="form-row two">
             <div class="field">
-              <label for="trade">Trade</label>
-              <select id="trade" name="trade" required>
-                <option value="">Select one</option>
-                <option value="electrician">Electrician</option>
-                <option value="plumber">Plumber</option>
-                <option value="other">Other trade</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
+              <label for="phone">Phone number</label>
               <input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" required>
             </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required>
+            </div>
           </div>
           <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+            <label for="revenue">Current monthly revenue</label>
+            <select id="revenue" name="revenue" required>
+              <option value="">Select a range</option>
+              <option value="under-10k">Under $10k / month</option>
+              <option value="10k-25k">$10k – $25k / month</option>
+              <option value="25k-50k">$25k – $50k / month</option>
+              <option value="50k-100k">$50k – $100k / month</option>
+              <option value="100k-plus">$100k+ / month</option>
+              <option value="prefer-not-to-say">Prefer not to say</option>
+            </select>
           </div>
-          <div class="field">
-            <label for="message">What's going on with your schedule right now?</label>
-            <textarea id="message" name="message" placeholder="e.g. Slow winter months, no website, inconsistent reviews..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Request My Free Strategy Call</button>
-          <p class="form-fine">No spam, no obligation — just a straight answer on what it'll take to fill your calendar.</p>
+          <button type="submit" class="btn btn-primary">Claim Your Spot Today</button>
+          <p class="form-fine">Only a few discovery calls available each week — we'll confirm your spot within one business day.</p>
         </form>
       </div>
     </div>
