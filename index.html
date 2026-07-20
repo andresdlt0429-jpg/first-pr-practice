@@ -183,18 +183,18 @@
   .brand{
     display:flex;
     align-items:center;
-    gap:.55rem;
+    gap:.6rem;
     font-family:var(--font-display);
     font-weight:700;
-    font-size:1.15rem;
+    font-size:1.35rem;
     color:var(--ink-950);
     text-decoration:none;
     letter-spacing:-.01em;
   }
   .brand-mark{
-    width:32px;
-    height:32px;
-    border-radius:9px;
+    width:40px;
+    height:40px;
+    border-radius:10px;
     background:linear-gradient(155deg, var(--accent-500), var(--accent-700));
     display:flex;
     align-items:center;
@@ -334,6 +334,19 @@
     opacity:.35;
     pointer-events:none;
   }
+  .hero-bolt-mark{
+    position:absolute;
+    top:6%;
+    right:-6%;
+    width:clamp(340px, 36vw, 600px);
+    height:clamp(340px, 36vw, 600px);
+    opacity:.09;
+    transform:rotate(-10deg);
+    filter: drop-shadow(0 40px 70px rgba(0,0,0,.55));
+    pointer-events:none;
+    z-index:1;
+  }
+  .hero-bolt-mark svg{ width:100%; height:100%; display:block; }
   .hero .wrap{
     position:relative;
     z-index:2;
@@ -1113,7 +1126,7 @@
   <div class="wrap">
     <a href="#top" class="brand">
       <span class="brand-mark" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="#fff"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="#fff"/></svg>
       </span>
       Strata
     </a>
@@ -1144,10 +1157,22 @@
   <div class="hero-blob b2" aria-hidden="true"></div>
   <div class="hero-blob b3" aria-hidden="true"></div>
   <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-bolt-mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <defs>
+        <linearGradient id="boltGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffb98a"/>
+          <stop offset="45%" stop-color="#ff7a34"/>
+          <stop offset="100%" stop-color="#c94a1d"/>
+        </linearGradient>
+      </defs>
+      <path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/>
+    </svg>
+  </div>
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Electricians &amp; Plumbers</span>
-      <h1>Stop Guessing. Start <em>Booking&nbsp;Jobs.</em></h1>
+      <h1>Stop the Empty Weeks. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
       <a href="#testimonials" class="hero-secondary-link">
         See Results
@@ -1174,6 +1199,33 @@
         <div class="field">
           <label for="hero-email">Email</label>
           <input id="hero-email" name="email" type="email" placeholder="you@company.com" required>
+        </div>
+        <div class="field">
+          <label for="hero-revenue">Current monthly revenue</label>
+          <select id="hero-revenue" name="revenue" required>
+            <option value="">Select a range</option>
+            <option value="under-10k">Under $10k / month</option>
+            <option value="10k-25k">$10k – $25k / month</option>
+            <option value="25k-50k">$25k – $50k / month</option>
+            <option value="50k-100k">$50k – $100k / month</option>
+            <option value="100k-plus">$100k+ / month</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hero-lead-source">How are jobs coming in now?</label>
+          <select id="hero-lead-source" name="lead-source" required>
+            <option value="">Select the main source</option>
+            <option value="referrals">Referrals / word of mouth</option>
+            <option value="google-search">Google search</option>
+            <option value="google-ads">Google Ads</option>
+            <option value="facebook">Facebook / social media</option>
+            <option value="signage">Signage / vehicle wraps</option>
+            <option value="door-knocking">Door knocking</option>
+            <option value="lead-sites">Angi, Thumbtack &amp; similar lead sites</option>
+            <option value="other">Other</option>
+            <option value="not-sure">Not sure / nothing consistent</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-primary hero-form-submit">Claim My Spot</button>
       </form>
@@ -1469,6 +1521,13 @@
             <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
           </summary>
           <p class="faq-answer">That's fine — bring what they've built to the call. We'll give you a straight read on what's working, what isn't, and whether switching actually makes sense for your business.</p>
+        </details>
+        <details class="faq-item">
+          <summary>
+            I've worked with agencies before and got burned — how is this different?
+            <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <p class="faq-answer">Fair concern — a lot of trades have. Most agencies hand you a generic template, then disappear after month one with no real reporting. We only work with electricians and plumbers, so your site, keywords, and ad spend are built around your trade, not a one-size-fits-all package. You also get call tracking and lead-source reporting from day one, so you can see exactly what's working instead of taking our word for it.</p>
         </details>
         <details class="faq-item">
           <summary>
