@@ -1260,17 +1260,38 @@
               <input id="email" name="email" type="email" placeholder="you@company.com" required>
             </div>
           </div>
+          <div class="form-row two">
+            <div class="field">
+              <label for="revenue">Current monthly revenue</label>
+              <select id="revenue" name="revenue" required>
+                <option value="">Select a range</option>
+                <option value="under-10k">Under $10k / month</option>
+                <option value="10k-25k">$10k – $25k / month</option>
+                <option value="25k-50k">$25k – $50k / month</option>
+                <option value="50k-100k">$50k – $100k / month</option>
+                <option value="100k-plus">$100k+ / month</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="lead-source">How are jobs coming in now?</label>
+              <select id="lead-source" name="lead-source" required>
+                <option value="">Select the main source</option>
+                <option value="referrals">Referrals / word of mouth</option>
+                <option value="google-search">Google search</option>
+                <option value="google-ads">Google Ads</option>
+                <option value="facebook">Facebook / social media</option>
+                <option value="signage">Signage / vehicle wraps</option>
+                <option value="door-knocking">Door knocking</option>
+                <option value="lead-sites">Angi, Thumbtack &amp; similar lead sites</option>
+                <option value="other">Other</option>
+                <option value="not-sure">Not sure / nothing consistent</option>
+              </select>
+            </div>
+          </div>
           <div class="field">
-            <label for="revenue">Current monthly revenue</label>
-            <select id="revenue" name="revenue" required>
-              <option value="">Select a range</option>
-              <option value="under-10k">Under $10k / month</option>
-              <option value="10k-25k">$10k – $25k / month</option>
-              <option value="25k-50k">$25k – $50k / month</option>
-              <option value="50k-100k">$50k – $100k / month</option>
-              <option value="100k-plus">$100k+ / month</option>
-              <option value="prefer-not-to-say">Prefer not to say</option>
-            </select>
+            <label for="notes">Anything we should know before the call?</label>
+            <textarea id="notes" name="notes" placeholder="e.g. Slow season coming up, current site is outdated, competitors outranking us..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Claim Your Spot Today</button>
           <p class="form-fine">Only a few discovery calls available each week — we'll confirm your spot within one business day.</p>
