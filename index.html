@@ -335,21 +335,18 @@
     opacity:.35;
     pointer-events:none;
   }
-  /* shared centered watermark, repeated behind every section */
+  /* centered watermark, hero only */
   .bg-bolt{
     position:absolute;
     top:50%;
     left:50%;
-    width:clamp(480px, 52vw, 880px);
-    height:clamp(480px, 52vw, 880px);
+    width:clamp(380px, 40vw, 680px);
+    height:clamp(380px, 40vw, 680px);
     opacity:.1;
     transform:translate(-50%, -50%) rotate(-8deg);
     filter: drop-shadow(0 40px 70px rgba(0,0,0,.5));
     pointer-events:none;
     z-index:0;
-  }
-  .bg-bolt.bg-bolt--soft{
-    filter: drop-shadow(0 30px 50px rgba(201,74,29,.18));
   }
   .bg-bolt svg{ width:100%; height:100%; display:block; }
   .hero .wrap{
@@ -393,6 +390,10 @@
     gap:var(--space-4);
     margin-top:var(--space-6);
   }
+  .hero-actions .btn-primary{
+    padding:1.15rem 2.4rem;
+    font-size:1.05rem;
+  }
   .hero-note{
     display:block;
     font-size:.85rem;
@@ -428,38 +429,48 @@
     background:#5be08a;
     box-shadow:0 0 0 4px rgba(91,224,138,.2);
   }
-  .hero-form-title{
+  .hero-card-stat{
+    font-family:var(--font-display);
+    font-size:2.75rem;
     color:var(--white);
-    font-size:1.15rem;
-    line-height:1.4;
-    margin-bottom:var(--space-5);
+    line-height:1;
   }
-  .hero-form .field{ margin-bottom:.85rem; }
-  .hero-form-submit{ width:100%; margin-top:.35rem; }
-  .hero-form-fine{
-    margin-top:var(--space-4);
-    text-align:center;
-    font-size:.78rem;
-    color:rgba(255,255,255,.5);
+  .hero-card-stat span{
+    color:var(--accent-400);
   }
-  .hero-secondary-link{
-    display:inline-flex;
-    align-items:center;
-    gap:.4rem;
-    margin-top:var(--space-5);
+  .hero-card-sub{
+    color:rgba(255,255,255,.6);
     font-size:.9rem;
-    font-weight:600;
-    color:rgba(255,255,255,.75);
-    text-decoration:none;
+    margin-top:.5rem;
   }
-  .hero-secondary-link svg{ transition:transform .25s var(--ease); }
-  .hero-secondary-link:hover{ color:var(--accent-400); }
-  .hero-secondary-link:hover svg{ transform:translateX(4px); }
+  .hero-card-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    height:64px;
+    margin-top:var(--space-5);
+  }
+  .hero-card-bars i{
+    flex:1;
+    display:block;
+    border-radius:5px 5px 2px 2px;
+    background: linear-gradient(180deg, var(--accent-400), var(--accent-700));
+    opacity:.85;
+  }
+  .hero-card-foot{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    margin-top:var(--space-5);
+    padding-top:var(--space-5);
+    border-top:1px solid rgba(255,255,255,.14);
+    font-size:.85rem;
+    color:rgba(255,255,255,.7);
+  }
+  .hero-card-foot svg{ flex-shrink:0; }
 
   /* ---------- STATS BAND ---------- */
   .stats{
-    position:relative;
-    overflow:hidden;
     background:var(--ink-950);
     border-top:1px solid rgba(255,255,255,.1);
     padding-block: clamp(2.5rem, 2rem + 2vw, 4rem);
@@ -584,6 +595,13 @@
     color:rgba(255,255,255,.4);
   }
 
+  /* ---------- SECTION-END CTA ---------- */
+  .section-cta{
+    position:relative;
+    margin-top: var(--space-7);
+    text-align:center;
+  }
+
   /* ---------- REVEAL / MOTION ---------- */
   .reveal{
     opacity:1;
@@ -601,17 +619,17 @@
   html.js .reveal-stagger.is-visible > *{ transition-delay: calc(var(--i, 0) * 90ms); }
 
   /* ---------- HOW IT WORKS ---------- */
-  .how{ position:relative; overflow:hidden; padding-block: var(--section-pad); }
+  .how{ padding-block: var(--section-pad); }
   .steps{
-    display:grid;
-    gap: var(--space-6);
-    counter-reset: step;
-  }
-  @media(min-width:800px){
-    .steps{ grid-template-columns:repeat(3,1fr); gap:var(--space-5); }
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap: var(--space-5);
   }
   .step{
     position:relative;
+    flex:1 1 260px;
+    max-width:330px;
     background:var(--white);
     border:1px solid var(--paper-line);
     border-radius: var(--radius-md);
@@ -648,19 +666,6 @@
   }
   .step h3{ font-size:1.25rem; margin-bottom:.6rem; }
   .step p{ color:var(--slate-500); font-size:.95rem; }
-  .step-connector{
-    display:none;
-  }
-  @media(min-width:800px){
-    .step:not(:last-child)::after{
-      content:"";
-      position:absolute;
-      top:50%; right:calc(var(--space-5) * -1 - 1px);
-      width:var(--space-5);
-      height:1px;
-      background: repeating-linear-gradient(90deg, var(--paper-line) 0 6px, transparent 6px 12px);
-    }
-  }
 
   /* ---------- SERVICES / FEATURES ---------- */
   .services{
@@ -738,7 +743,7 @@
   }
 
   /* ---------- PRICING ---------- */
-  .pricing{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper); }
+  .pricing{ padding-block: var(--section-pad); background:var(--paper); }
   .plans{
     display:grid;
     gap:var(--space-5);
@@ -835,7 +840,7 @@
   .plan .btn{ width:100%; }
 
   /* ---------- TESTIMONIALS ---------- */
-  .testimonials{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper-dim); }
+  .testimonials{ padding-block: var(--section-pad); background:var(--paper-dim); }
   .t-grid{
     display:grid;
     gap:var(--space-5);
@@ -878,7 +883,7 @@
   .t-person span{ display:block; font-size:.8rem; color:var(--slate-500); }
 
   /* ---------- FAQ ---------- */
-  .faq{ position:relative; overflow:hidden; padding-block: var(--section-pad); background:var(--paper); }
+  .faq{ padding-block: var(--section-pad); background:var(--paper); }
   .faq-list{
     max-width:760px;
     margin-inline:auto;
@@ -994,12 +999,11 @@
   .contact-point span{ display:block; color:rgba(255,255,255,.55); font-size:.85rem; }
 
   .contact-form{
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.14);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
+    background:var(--white);
+    border:1px solid var(--paper-line);
     border-radius:var(--radius-lg);
     padding:var(--space-6);
+    box-shadow: var(--shadow-lift);
   }
   .form-row{
     display:grid;
@@ -1013,37 +1017,37 @@
     display:block;
     font-size:.8rem;
     font-weight:600;
-    color:rgba(255,255,255,.7);
+    color:var(--slate-700);
     margin-bottom:.45rem;
   }
   .field input,
   .field select,
   .field textarea{
     width:100%;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.18);
+    background:var(--paper);
+    border:1px solid var(--paper-line);
     border-radius:var(--radius-sm);
     padding:.8rem .9rem;
-    color:var(--white);
+    color:var(--ink-950);
     font-family:inherit;
     font-size:.92rem;
     transition: border-color .25s var(--ease), background-color .25s var(--ease);
   }
-  .field select{ color:var(--white); }
+  .field select{ color:var(--ink-950); }
   .field select option{ color:var(--ink-950); }
-  .field input::placeholder, .field textarea::placeholder{ color:rgba(255,255,255,.35); }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--slate-400); }
   .field input:focus,
   .field select:focus,
   .field textarea:focus{
     outline:none;
-    border-color:var(--accent-400);
-    background:rgba(255,255,255,.1);
+    border-color:var(--accent-500);
+    background:var(--white);
   }
   .field textarea{ resize:vertical; min-height:100px; }
   .contact-form .btn{ width:100%; margin-top:var(--space-1); }
   .form-fine{
     font-size:.78rem;
-    color:rgba(255,255,255,.4);
+    color:var(--slate-500);
     margin-top:var(--space-3);
     text-align:center;
   }
@@ -1184,70 +1188,38 @@
       <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Electricians &amp; Plumbers</span>
       <h1>Stop the Empty Weeks. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for trades — so your phone rings before the guy who outbids you on price ever gets the call.</p>
-      <a href="#testimonials" class="hero-secondary-link">
-        See Results
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Claim My Free Strategy Call</a>
+        <a href="#testimonials" class="btn btn-ghost">See Results</a>
+      </div>
       <span class="hero-note">15 minutes. No pressure, just a plan.</span>
     </div>
 
     <div class="hero-card reveal">
       <div class="hero-card-top">
-        <span>Free 30-Minute Discovery Call</span>
+        <span>Local Pack Ranking</span>
         <span class="pulse-dot" aria-hidden="true"></span>
       </div>
-      <h3 class="hero-form-title">Claim your spot before this week fills up.</h3>
-      <form class="hero-form" action="#" method="post">
-        <div class="field">
-          <label for="hero-name">Full name</label>
-          <input id="hero-name" name="name" type="text" placeholder="John Alvarez" required>
-        </div>
-        <div class="field">
-          <label for="hero-phone">Phone number</label>
-          <input id="hero-phone" name="phone" type="tel" placeholder="(555) 123-4567" required>
-        </div>
-        <div class="field">
-          <label for="hero-email">Email</label>
-          <input id="hero-email" name="email" type="email" placeholder="you@company.com" required>
-        </div>
-        <div class="field">
-          <label for="hero-revenue">Current monthly revenue</label>
-          <select id="hero-revenue" name="revenue" required>
-            <option value="">Select a range</option>
-            <option value="under-10k">Under $10k / month</option>
-            <option value="10k-25k">$10k – $25k / month</option>
-            <option value="25k-50k">$25k – $50k / month</option>
-            <option value="50k-100k">$50k – $100k / month</option>
-            <option value="100k-plus">$100k+ / month</option>
-            <option value="prefer-not-to-say">Prefer not to say</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="hero-lead-source">How are jobs coming in now?</label>
-          <select id="hero-lead-source" name="lead-source" required>
-            <option value="">Select the main source</option>
-            <option value="referrals">Referrals / word of mouth</option>
-            <option value="google-search">Google search</option>
-            <option value="google-ads">Google Ads</option>
-            <option value="facebook">Facebook / social media</option>
-            <option value="signage">Signage / vehicle wraps</option>
-            <option value="door-knocking">Door knocking</option>
-            <option value="lead-sites">Angi, Thumbtack &amp; similar lead sites</option>
-            <option value="other">Other</option>
-            <option value="not-sure">Not sure / nothing consistent</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary hero-form-submit">Claim My Spot</button>
-      </form>
-      <p class="hero-form-fine">Only a few discovery calls available each week.</p>
+      <div class="hero-card-stat">+186<span>%</span></div>
+      <p class="hero-card-sub">Booked calls, 90 days after launch — average across active clients.</p>
+      <div class="hero-card-bars" aria-hidden="true">
+        <i style="height:35%"></i>
+        <i style="height:52%"></i>
+        <i style="height:44%"></i>
+        <i style="height:68%"></i>
+        <i style="height:60%"></i>
+        <i style="height:88%"></i>
+        <i style="height:100%"></i>
+      </div>
+      <div class="hero-card-foot">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        Next opening: Tuesday, 10:00 AM
+      </div>
     </div>
   </div>
 </header>
 
 <section class="stats">
-  <div class="bg-bolt" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-  </div>
   <div class="wrap">
     <div class="stats-grid reveal-stagger reveal">
       <div class="stat" style="--i:0">
@@ -1267,9 +1239,6 @@
 </section>
 
 <section class="agitation" id="agitation">
-  <div class="bg-bolt" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-  </div>
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow">The Website Standard For 2026</span>
@@ -1299,19 +1268,19 @@
       </div>
     </div>
     <p class="agitation-source">Sources: aggregated 2024–2026 web performance, UX, and consumer behavior research.</p>
+    <div class="section-cta reveal">
+      <a href="#contact" class="btn btn-primary">Book My Call</a>
+    </div>
   </div>
 </section>
 
 <main>
 
   <section class="how" id="how">
-    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">How It Works</span>
-        <h2 class="section-title">Three steps to a full schedule.</h2>
+        <h2 class="section-title">Five steps to a full schedule.</h2>
         <p>No jargon, no 40-page proposals. Just a clear path from "empty week" to "fully booked."</p>
       </div>
 
@@ -1330,26 +1299,44 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
           </div>
           <div class="step-num">Step 02</div>
-          <h3>We Build &amp; Launch</h3>
-          <p>Your new site, tracking, and local SEO foundation go live — fully mobile-responsive, fast, and set up to rank in every city you serve.</p>
+          <h3>We Build</h3>
+          <p>Your new site takes shape — fast, mobile-first, and built specifically around how homeowners search for an electrician or plumber.</p>
         </div>
 
         <div class="step reveal">
           <div class="step-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
           </div>
           <div class="step-num">Step 03</div>
-          <h3>Leads Start Rolling In</h3>
-          <p>Calls, form fills, and reviews get tracked and reported monthly, so you always know exactly where your next job is coming from.</p>
+          <h3>We Launch &amp; Optimize</h3>
+          <p>We go live, then fine-tune on-page SEO, load speed, and calls-to-action until the site is converting the way it should.</p>
         </div>
+
+        <div class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17V11M12 17V7M16 17v-4"/></svg>
+          </div>
+          <div class="step-num">Step 04</div>
+          <h3>We Track &amp; Report</h3>
+          <p>Call tracking, lead-source reporting, and conversion tracking go live, so every call and form fill is tied back to exactly what drove it.</p>
+        </div>
+
+        <div class="step reveal">
+          <div class="step-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div class="step-num">Step 05</div>
+          <h3>Leads Start Rolling In</h3>
+          <p>Calls and form fills start coming in — and automated follow-up keeps every lead warm until it turns into a booked job.</p>
+        </div>
+      </div>
+      <div class="section-cta reveal">
+        <a href="#contact" class="btn btn-primary">Book My Call</a>
       </div>
     </div>
   </section>
 
   <section class="services" id="services">
-    <div class="bg-bolt" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">What's Included</span>
@@ -1406,13 +1393,13 @@
           </ul>
         </div>
       </div>
+      <div class="section-cta reveal">
+        <a href="#contact" class="btn btn-primary">Book My Call</a>
+      </div>
     </div>
   </section>
 
   <section class="pricing" id="pricing">
-    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Pricing</span>
@@ -1466,13 +1453,13 @@
           <a href="#contact" class="btn btn-dark">Get Started</a>
         </div>
       </div>
+      <div class="section-cta reveal">
+        <a href="#contact" class="btn btn-primary">Book My Call</a>
+      </div>
     </div>
   </section>
 
   <section class="testimonials" id="testimonials">
-    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">Results</span>
@@ -1505,13 +1492,13 @@
           </div>
         </div>
       </div>
+      <div class="section-cta reveal">
+        <a href="#contact" class="btn btn-primary">Book My Call</a>
+      </div>
     </div>
   </section>
 
   <section class="faq" id="faq">
-    <div class="bg-bolt bg-bolt--soft" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow">FAQ</span>
@@ -1568,13 +1555,13 @@
           <p class="faq-answer">Plans start at $497/month for a new site build, hosting, and basic local SEO. We'll recommend the right tier for where your business is at right now on the call — no pressure to jump to the top package.</p>
         </details>
       </div>
+      <div class="section-cta reveal">
+        <a href="#contact" class="btn btn-primary">Book My Call</a>
+      </div>
     </div>
   </section>
 
   <section class="contact" id="contact">
-    <div class="bg-bolt" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-    </div>
     <div class="wrap">
       <div class="contact-grid">
         <div class="contact-info reveal">
@@ -1662,9 +1649,6 @@
 </main>
 
 <footer>
-  <div class="bg-bolt" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6Z" fill="url(#boltGrad)"/></svg>
-  </div>
   <div class="wrap footer-grid">
     <a href="#top" class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
