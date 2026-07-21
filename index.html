@@ -864,6 +864,53 @@
   .plan-featured .plan-list li.included-all{ color:rgba(255,255,255,.55); }
   .plan .btn{ width:100%; }
 
+  /* ---------- CLIENT TICKER ---------- */
+  .ticker{
+    background:var(--ink-950);
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding-block: var(--space-6);
+    overflow:hidden;
+  }
+  .ticker-label{
+    text-align:center;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.4);
+    margin-bottom:var(--space-4);
+  }
+  .ticker-track-wrap{
+    overflow:hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .ticker-track{
+    display:flex;
+    align-items:center;
+    gap:2.5rem;
+    width:max-content;
+    animation: ticker-scroll 38s linear infinite;
+  }
+  .ticker-track-wrap:hover .ticker-track{ animation-play-state:paused; }
+  .ticker-item{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.05rem;
+    color:rgba(255,255,255,.55);
+    white-space:nowrap;
+  }
+  .ticker-dot{ color:var(--accent-500); font-size:.7rem; }
+  @keyframes ticker-scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{ animation:none; }
+    .ticker-track-wrap{ overflow-x:auto; }
+  }
+
   /* ---------- TESTIMONIALS ---------- */
   .testimonials{ padding-block: var(--section-pad); background:var(--paper-dim); }
   .t-grid{
@@ -1243,6 +1290,48 @@
     </div>
   </div>
 </header>
+
+<section class="ticker reveal" aria-label="Companies Strata has helped">
+  <div class="wrap">
+    <p class="ticker-label">Trusted by exterior cleaning companies nationwide</p>
+  </div>
+  <div class="ticker-track-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">Rivera Pressure Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Cascade Window Cleaning</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Summit Exterior Cleaning</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Crystal Clear Window Co.</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Peak Softwash</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Clearview Window Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Northstar Exterior Care</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item">Pure Shine Pressure Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Rivera Pressure Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Cascade Window Cleaning</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Summit Exterior Cleaning</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Crystal Clear Window Co.</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Peak Softwash</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Clearview Window Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Northstar Exterior Care</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+      <span class="ticker-item" aria-hidden="true">Pure Shine Pressure Washing</span>
+      <span class="ticker-dot" aria-hidden="true">&#9679;</span>
+    </div>
+  </div>
+</section>
 
 <section class="testimonials" id="testimonials">
   <div class="wrap">
