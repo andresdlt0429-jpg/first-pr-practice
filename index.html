@@ -362,10 +362,28 @@
       gap: var(--space-6);
     }
   }
-  .hero-eyebrow{
-    color: var(--accent-400);
+  .hero-claim{
+    display:inline-flex;
+    align-items:center;
+    gap:.65rem;
+    background:rgba(242,98,44,.14);
+    border:1px solid rgba(242,98,44,.4);
+    border-radius:999px;
+    padding:.7rem 1.3rem;
+    box-shadow: 0 8px 24px -12px rgba(242,98,44,.5);
   }
-  .hero-eyebrow::before{ background:var(--accent-400); }
+  .hero-claim svg{ flex-shrink:0; color:var(--accent-400); }
+  .hero-claim span{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(.85rem, .75rem + .3vw, .98rem);
+    line-height:1.35;
+    color:var(--white);
+  }
+  .hero-claim span em{
+    font-style:normal;
+    color:var(--accent-400);
+  }
   .hero h1{
     color:var(--white);
     font-size: clamp(2.5rem, 2rem + 3.6vw, 4.6rem);
@@ -1257,7 +1275,10 @@
   </div>
   <div class="wrap">
     <div class="reveal reveal-left">
-      <span class="eyebrow hero-eyebrow">Web Design &amp; SEO for Exterior Cleaning Companies</span>
+      <div class="hero-claim">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>The <em>#1</em> Web Design, SEO &amp; Lead Gen Agency for Exterior Cleaning &amp; Home Service Businesses</span>
+      </div>
       <h1>Stop the Empty Weeks. Start <em>Booking&nbsp;Jobs.</em></h1>
       <p class="lede">Strata builds fast, high-converting websites and local SEO systems built specifically for exterior cleaning companies — so your phone rings before the guy who outbids you on price ever gets the call.</p>
       <div class="hero-actions">
