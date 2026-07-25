@@ -27,7 +27,9 @@
     --accent-600:#f2622c;
     --accent-700:#c94a1d;
     --accent-ink:#3a1a0c;
-    --logo-blue:#2563eb;
+    --logo-blue-400:#6fb3ff;
+    --logo-blue-500:#3b82f6;
+    --logo-blue-700:#1d4ed8;
 
     --font-display:'Bricolage Grotesque', system-ui, sans-serif;
     --font-body:'Inter', system-ui, sans-serif;
@@ -198,27 +200,31 @@
     width:40px;
     height:40px;
     border-radius:50%;
-    background:var(--logo-blue);
+    background:linear-gradient(155deg, var(--logo-blue-400), var(--logo-blue-500) 45%, var(--logo-blue-700));
+    background-size:180% 180%;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
+    animation: nb-drift 5s ease-in-out infinite;
   }
   .brand-ping{
     position:absolute;
     inset:0;
     border-radius:50%;
-    border:2px solid var(--logo-blue);
+    border:2px solid var(--logo-blue-500);
     animation:nb-ping 2.6s cubic-bezier(0,.55,.45,1) infinite;
     pointer-events:none;
   }
   .brand-ping:nth-of-type(2){ animation-delay:1.3s; }
   .brand-mark svg{
     position:relative;
-    width:60%;
-    height:60%;
     animation: nb-needle 5s cubic-bezier(.3,0,.2,1) infinite;
     transform-origin:50% 50%;
+  }
+  @keyframes nb-drift{
+    0%,100%{ background-position:0% 30%; }
+    50%{ background-position:100% 70%; }
   }
   @keyframes nb-ping{
     0%{ transform:scale(1); opacity:.6; }
@@ -1279,7 +1285,10 @@
       <span class="brand-mark" aria-hidden="true">
         <span class="brand-ping"></span>
         <span class="brand-ping"></span>
-        <svg viewBox="0 0 24 24"><path d="M12 3 19.5 19 4.5 19Z" fill="#fff"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
+          <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
+        </svg>
       </span>
       Northbound
     </a>
@@ -1838,7 +1847,10 @@
       <span class="brand-mark" aria-hidden="true">
         <span class="brand-ping"></span>
         <span class="brand-ping"></span>
-        <svg viewBox="0 0 24 24"><path d="M12 3 19.5 19 4.5 19Z" fill="#fff"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
+          <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
+        </svg>
       </span>
       Northbound Marketing
     </a>
