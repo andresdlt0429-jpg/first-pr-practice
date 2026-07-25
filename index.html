@@ -206,30 +206,41 @@
     align-items:center;
     justify-content:center;
     flex-shrink:0;
-    animation: nb-drift 7s ease-in-out infinite, nb-pulse 3.2s ease-in-out infinite;
+    animation: nb-drift 5s ease-in-out infinite;
   }
+  .brand-ping{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:2px solid var(--logo-blue-500);
+    animation:nb-ping 2.6s cubic-bezier(0,.55,.45,1) infinite;
+    pointer-events:none;
+  }
+  .brand-ping:nth-of-type(2){ animation-delay:1.3s; }
   .brand-mark svg{
-    animation: nb-needle 6s cubic-bezier(.3,0,.2,1) infinite;
+    position:relative;
+    animation: nb-needle 5s cubic-bezier(.3,0,.2,1) infinite;
     transform-origin:50% 50%;
   }
   @keyframes nb-drift{
     0%,100%{ background-position:0% 30%; }
     50%{ background-position:100% 70%; }
   }
-  @keyframes nb-pulse{
-    0%,100%{ box-shadow:0 0 0 0 rgba(59,130,246,.38); }
-    50%{ box-shadow:0 0 0 7px rgba(59,130,246,0); }
+  @keyframes nb-ping{
+    0%{ transform:scale(1); opacity:.6; }
+    100%{ transform:scale(1.9); opacity:0; }
   }
   @keyframes nb-needle{
-    0%,64%,100%{ transform:rotate(0deg); }
-    8%{ transform:rotate(-16deg); }
-    20%{ transform:rotate(10deg); }
-    32%{ transform:rotate(-6deg); }
-    44%{ transform:rotate(3deg); }
-    54%{ transform:rotate(-1deg); }
+    0%,58%,100%{ transform:rotate(0deg) scale(1); }
+    6%{ transform:rotate(-24deg) scale(1.08); }
+    16%{ transform:rotate(17deg) scale(1.04); }
+    26%{ transform:rotate(-11deg) scale(1.05); }
+    36%{ transform:rotate(6deg) scale(1.02); }
+    46%{ transform:rotate(-2deg) scale(1); }
   }
   @media(prefers-reduced-motion: reduce){
-    .brand-mark, .brand-mark svg{ animation:none; }
+    .brand-mark, .brand-mark svg, .brand-ping{ animation:none; }
+    .brand-ping{ display:none; }
   }
   .nav-toggle-input{
     position:absolute;
@@ -1272,6 +1283,8 @@
   <div class="wrap">
     <a href="#top" class="brand">
       <span class="brand-mark" aria-hidden="true">
+        <span class="brand-ping"></span>
+        <span class="brand-ping"></span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
           <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
@@ -1832,6 +1845,8 @@
   <div class="wrap footer-grid">
     <a href="#top" class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
+        <span class="brand-ping"></span>
+        <span class="brand-ping"></span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
           <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
           <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
