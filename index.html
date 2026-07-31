@@ -208,39 +208,24 @@
     flex-shrink:0;
     animation: nb-drift 5s ease-in-out infinite;
   }
-  .brand-ping{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    border:2px solid var(--logo-blue-500);
-    animation:nb-ping 2.6s cubic-bezier(0,.55,.45,1) infinite;
-    pointer-events:none;
+  .brand-mark svg{ position:relative; }
+  .brand-mark .bar{
+    animation: nb-bar 1.6s ease-in-out infinite;
+    transform-origin:50% 100%;
   }
-  .brand-ping:nth-of-type(2){ animation-delay:1.3s; }
-  .brand-mark svg{
-    position:relative;
-    animation: nb-needle 5s cubic-bezier(.3,0,.2,1) infinite;
-    transform-origin:50% 50%;
-  }
+  .brand-mark .bar1{ animation-delay:0s; }
+  .brand-mark .bar2{ animation-delay:.18s; }
+  .brand-mark .bar3{ animation-delay:.36s; }
   @keyframes nb-drift{
     0%,100%{ background-position:0% 30%; }
     50%{ background-position:100% 70%; }
   }
-  @keyframes nb-ping{
-    0%{ transform:scale(1); opacity:.6; }
-    100%{ transform:scale(1.9); opacity:0; }
-  }
-  @keyframes nb-needle{
-    0%,58%,100%{ transform:rotate(0deg) scale(1); }
-    6%{ transform:rotate(-24deg) scale(1.08); }
-    16%{ transform:rotate(17deg) scale(1.04); }
-    26%{ transform:rotate(-11deg) scale(1.05); }
-    36%{ transform:rotate(6deg) scale(1.02); }
-    46%{ transform:rotate(-2deg) scale(1); }
+  @keyframes nb-bar{
+    0%,100%{ transform:scaleY(1); }
+    50%{ transform:scaleY(.5); }
   }
   @media(prefers-reduced-motion: reduce){
-    .brand-mark, .brand-mark svg, .brand-ping{ animation:none; }
-    .brand-ping{ display:none; }
+    .brand-mark, .brand-mark .bar{ animation:none; }
   }
   .nav-toggle-input{
     position:absolute;
@@ -1283,11 +1268,10 @@
   <div class="wrap">
     <a href="#top" class="brand">
       <span class="brand-mark" aria-hidden="true">
-        <span class="brand-ping"></span>
-        <span class="brand-ping"></span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
-          <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
+          <rect class="bar bar1" x="4" y="12" width="4" height="7" rx="1.5" fill="#fff"/>
+          <rect class="bar bar2" x="10" y="7" width="4" height="12" rx="1.5" fill="#fff"/>
+          <rect class="bar bar3" x="16" y="2" width="4" height="17" rx="1.5" fill="#fff"/>
         </svg>
       </span>
       Northbound
@@ -1845,11 +1829,10 @@
   <div class="wrap footer-grid">
     <a href="#top" class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
-        <span class="brand-ping"></span>
-        <span class="brand-ping"></span>
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2 16 12 12 9 8 12Z" fill="#fff"/>
-          <path d="M12 22 8 12 12 15 16 12Z" fill="#fff" opacity=".45"/>
+          <rect class="bar bar1" x="4" y="12" width="4" height="7" rx="1.5" fill="#fff"/>
+          <rect class="bar bar2" x="10" y="7" width="4" height="12" rx="1.5" fill="#fff"/>
+          <rect class="bar bar3" x="16" y="2" width="4" height="17" rx="1.5" fill="#fff"/>
         </svg>
       </span>
       Northbound Marketing
