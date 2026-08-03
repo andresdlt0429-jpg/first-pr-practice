@@ -208,24 +208,23 @@
     flex-shrink:0;
     animation: nb-drift 5s ease-in-out infinite;
   }
-  .brand-mark svg{ position:relative; }
-  .brand-mark .bar{
-    animation: nb-bar 1.6s ease-in-out infinite;
-    transform-origin:50% 100%;
+  .brand-mark svg{
+    position:relative;
+    animation: nb-arrow-up 1.5s cubic-bezier(.3,0,.15,1) infinite;
   }
-  .brand-mark .bar1{ animation-delay:0s; }
-  .brand-mark .bar2{ animation-delay:.18s; }
-  .brand-mark .bar3{ animation-delay:.36s; }
   @keyframes nb-drift{
     0%,100%{ background-position:0% 30%; }
     50%{ background-position:100% 70%; }
   }
-  @keyframes nb-bar{
-    0%,100%{ transform:scaleY(1); }
-    50%{ transform:scaleY(.5); }
+  @keyframes nb-arrow-up{
+    0%{ transform:translateY(0); }
+    28%{ transform:translateY(-26%); }
+    52%{ transform:translateY(4%); }
+    74%{ transform:translateY(-5%); }
+    100%{ transform:translateY(0); }
   }
   @media(prefers-reduced-motion: reduce){
-    .brand-mark, .brand-mark .bar{ animation:none; }
+    .brand-mark, .brand-mark svg{ animation:none; }
   }
   .nav-toggle-input{
     position:absolute;
@@ -1269,9 +1268,7 @@
     <a href="#top" class="brand">
       <span class="brand-mark" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <rect class="bar bar1" x="4" y="12" width="4" height="7" rx="1.5" fill="#fff"/>
-          <rect class="bar bar2" x="10" y="7" width="4" height="12" rx="1.5" fill="#fff"/>
-          <rect class="bar bar3" x="16" y="2" width="4" height="17" rx="1.5" fill="#fff"/>
+          <path d="M12 2 19 10 15 10 15 22 9 22 9 10 5 10Z" fill="#fff"/>
         </svg>
       </span>
       Northbound
@@ -1830,9 +1827,7 @@
     <a href="#top" class="footer-brand">
       <span class="brand-mark" aria-hidden="true">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
-          <rect class="bar bar1" x="4" y="12" width="4" height="7" rx="1.5" fill="#fff"/>
-          <rect class="bar bar2" x="10" y="7" width="4" height="12" rx="1.5" fill="#fff"/>
-          <rect class="bar bar3" x="16" y="2" width="4" height="17" rx="1.5" fill="#fff"/>
+          <path d="M12 2 19 10 15 10 15 22 9 22 9 10 5 10Z" fill="#fff"/>
         </svg>
       </span>
       Northbound Marketing
