@@ -27,9 +27,10 @@
     --accent-600:#f2622c;
     --accent-700:#c94a1d;
     --accent-ink:#3a1a0c;
-    --logo-blue-400:#6fb3ff;
-    --logo-blue-500:#3b82f6;
-    --logo-blue-700:#1d4ed8;
+    --logo-blue-400:#22d3ee;
+    --logo-blue-500:#4f46e5;
+    --logo-blue-700:#6d28d9;
+    --logo-glow:rgba(99,102,241,.6);
 
     --font-display:'Bricolage Grotesque', system-ui, sans-serif;
     --font-body:'Inter', system-ui, sans-serif;
@@ -206,22 +207,27 @@
     align-items:center;
     justify-content:center;
     flex-shrink:0;
-    animation: nb-drift 5s ease-in-out infinite;
+    animation: nb-drift 5s ease-in-out infinite, nb-glow 1.3s cubic-bezier(.3,0,.15,1) infinite;
   }
   .brand-mark svg{
     position:relative;
-    animation: nb-arrow-up 1.5s cubic-bezier(.3,0,.15,1) infinite;
+    animation: nb-arrow-up 1.3s cubic-bezier(.34,0,.13,1) infinite;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,.85)) drop-shadow(0 3px 6px rgba(20,10,50,.4));
   }
   @keyframes nb-drift{
     0%,100%{ background-position:0% 30%; }
     50%{ background-position:100% 70%; }
   }
+  @keyframes nb-glow{
+    0%,100%{ box-shadow:0 6px 16px -4px var(--logo-glow); }
+    28%{ box-shadow:0 10px 28px -4px var(--logo-glow); }
+  }
   @keyframes nb-arrow-up{
-    0%{ transform:translateY(0); }
-    28%{ transform:translateY(-26%); }
-    52%{ transform:translateY(4%); }
-    74%{ transform:translateY(-5%); }
-    100%{ transform:translateY(0); }
+    0%{ transform:translateY(0) scale(1); }
+    28%{ transform:translateY(-30%) scale(1.08); }
+    52%{ transform:translateY(4%) scale(.97); }
+    74%{ transform:translateY(-6%) scale(1.02); }
+    100%{ transform:translateY(0) scale(1); }
   }
   @media(prefers-reduced-motion: reduce){
     .brand-mark, .brand-mark svg{ animation:none; }
