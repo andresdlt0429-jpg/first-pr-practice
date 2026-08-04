@@ -789,103 +789,6 @@
     color:var(--accent-400);
   }
 
-  /* ---------- PRICING ---------- */
-  .pricing{ padding-block: var(--section-pad); background:var(--paper); }
-  .plans{
-    display:grid;
-    gap:var(--space-5);
-    align-items:stretch;
-  }
-  @media(min-width:900px){
-    .plans{ grid-template-columns:repeat(3,1fr); }
-  }
-  .plan{
-    display:flex;
-    flex-direction:column;
-    background:var(--white);
-    border:1px solid var(--paper-line);
-    border-radius: var(--radius-lg);
-    padding:var(--space-6) var(--space-5);
-    transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-  }
-  .plan:hover{ transform:translateY(-6px); box-shadow:var(--shadow-soft); }
-  .plan-featured{
-    background: var(--ink-950);
-    border-color: var(--ink-950);
-    position:relative;
-    box-shadow: var(--shadow-lift);
-  }
-  @media(min-width:900px){
-    .plan-featured{ transform:scale(1.045); z-index:2; }
-    .plan-featured:hover{ transform:scale(1.045) translateY(-6px); }
-  }
-  .plan-badge{
-    position:absolute;
-    top:-14px; left:50%;
-    transform:translateX(-50%);
-    background:var(--accent-600);
-    color:var(--white);
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    padding:.4rem .9rem;
-    border-radius:999px;
-    box-shadow:0 8px 18px -6px rgba(242,98,44,.6);
-  }
-  .plan-name{
-    font-size:1.05rem;
-    font-weight:700;
-    color:var(--slate-500);
-  }
-  .plan-featured .plan-name{ color:rgba(255,255,255,.65); }
-  .plan-desc{
-    font-size:.875rem;
-    color:var(--slate-500);
-    margin-top:.35rem;
-    margin-bottom:var(--space-5);
-  }
-  .plan-featured .plan-desc{ color:rgba(255,255,255,.55); }
-  .plan-price{
-    display:flex;
-    align-items:baseline;
-    gap:.35rem;
-    margin-bottom:var(--space-5);
-  }
-  .plan-price .amount{
-    font-family:var(--font-display);
-    font-size:2.75rem;
-    color:var(--ink-950);
-  }
-  .plan-featured .plan-price .amount{ color:var(--white); }
-  .plan-price .period{
-    font-size:.9rem;
-    color:var(--slate-500);
-  }
-  .plan-featured .plan-price .period{ color:rgba(255,255,255,.5); }
-  .plan-list{
-    flex:1;
-    margin-bottom:var(--space-6);
-  }
-  .plan-list li{
-    display:flex;
-    align-items:flex-start;
-    gap:.6rem;
-    padding-block:.5rem;
-    font-size:.92rem;
-    color:var(--slate-700);
-  }
-  .plan-featured .plan-list li{ color:rgba(255,255,255,.85); }
-  .plan-list li svg{ flex-shrink:0; margin-top:3px; color:var(--accent-600); }
-  .plan-featured .plan-list li svg{ color:var(--accent-400); }
-  .plan-list li.included-all{
-    color:var(--slate-500);
-    font-style:italic;
-    font-size:.85rem;
-  }
-  .plan-featured .plan-list li.included-all{ color:rgba(255,255,255,.55); }
-  .plan .btn{ width:100%; }
-
   /* ---------- CLIENT TICKER ---------- */
   .ticker{
     background:var(--ink-950);
@@ -1252,7 +1155,6 @@
       <a href="#testimonials">Results</a>
       <a href="#how">How It Works</a>
       <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-cta">
@@ -1586,63 +1488,6 @@
     </div>
   </section>
 
-  <section class="pricing" id="pricing">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow">Pricing</span>
-        <h2 class="section-title">Pick your pace. Cancel-anytime, no contracts.</h2>
-        <p style="margin-inline:auto;">Every plan includes Meta ad account management, a dedicated CRM, and monthly performance reporting. Upgrade or downgrade anytime as your schedule fills up.</p>
-      </div>
-
-      <div class="plans">
-        <div class="plan reveal">
-          <span class="plan-name">Starter</span>
-          <p class="plan-desc">Get your Meta ads system up and running.</p>
-          <div class="plan-price"><span class="amount">$497</span><span class="period">/ month</span></div>
-          <ul class="plan-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Meta ad account setup &amp; management</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated CRM setup &amp; integration</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>1 ad script + video edit / month</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Local audience targeting</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly performance report</li>
-          </ul>
-          <a href="#contact" class="btn btn-dark">Get Started</a>
-        </div>
-
-        <div class="plan plan-featured reveal">
-          <span class="plan-badge">Most Popular</span>
-          <span class="plan-name">Growth</span>
-          <p class="plan-desc">For window cleaning companies ready to scale their bookings.</p>
-          <div class="plan-price"><span class="amount">$949</span><span class="period">/ month</span></div>
-          <ul class="plan-list">
-            <li class="included-all">Everything in Starter, plus:</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3 ad scripts + video edits / month</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Automated CRM follow-up sequences</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>A/B creative testing</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Missed-call text-back</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Review request automation</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary">Get Started</a>
-        </div>
-
-        <div class="plan reveal">
-          <span class="plan-name">Dominate</span>
-          <p class="plan-desc">For teams ready to own every city they serve.</p>
-          <div class="plan-price"><span class="amount">$1,749</span><span class="period">/ month</span></div>
-          <ul class="plan-list">
-            <li class="included-all">Everything in Growth, plus:</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited ad scripts + video edits</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multi-city / multi-service campaigns</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated ad strategist</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Weekly optimization calls</li>
-          </ul>
-          <a href="#contact" class="btn btn-dark">Get Started</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="faq" id="faq">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1805,7 +1650,6 @@
       <a href="#testimonials">Results</a>
       <a href="#how">How It Works</a>
       <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </div>
     <span class="footer-copy">© 2026 Strata Digital Marketing. All rights reserved.</span>
